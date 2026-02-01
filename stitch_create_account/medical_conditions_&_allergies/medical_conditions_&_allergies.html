@@ -121,11 +121,17 @@ document.getElementById('backBtn').addEventListener('click', function(e) {
 </div>
 <div class="h-32"></div>
 <div class="fixed bottom-0 w-full max-w-[430px] p-6 bg-gradient-to-t from-white dark:from-background-dark via-white dark:via-background-dark to-transparent">
-<button class="w-full bg-primary hover:bg-opacity-90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-transform active:scale-95 flex items-center justify-center gap-2">
+<button id="nextStepBtn" class="w-full bg-primary hover:bg-opacity-90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-transform active:scale-95 flex items-center justify-center gap-2">
 <span>Next Step</span>
 <span class="material-symbols-outlined text-xl">arrow_forward</span>
 </button>
 </div>
+<script>
+document.getElementById('nextStepBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.top.postMessage({ type: 'NAVIGATE', screen: 'select_blood_type' }, '*');
+});
+</script>
 </div>
 
 </body></html>

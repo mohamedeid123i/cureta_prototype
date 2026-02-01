@@ -461,6 +461,17 @@
                 return;
             }
             
+            // === PHASE 3 WIZARD SCREENS: Let them handle their own interactions ===
+            const wizardScreens = [
+                'enter_your_age',
+                'medical_conditions_&_allergies', 
+                'select_blood_type'
+            ];
+            if (wizardScreens.includes(screenName)) {
+                // These screens have their own JavaScript, don't intercept
+                return;
+            }
+            
             doc.body.addEventListener('click', function(e) {
                 const target = e.target.closest('button, a, [role="button"], nav span, .fab, [class*="fab"]');
                 if (!target) return;

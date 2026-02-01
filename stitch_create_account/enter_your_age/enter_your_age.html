@@ -166,11 +166,33 @@
 </main>
 <footer class="p-6 pb-8 bg-background-light dark:bg-background-dark relative z-30">
 <div class="absolute top-[-20px] left-0 right-0 h-6 bg-gradient-to-t from-background-light dark:from-background-dark to-transparent"></div>
-<button class="w-full bg-primary hover:opacity-90 text-white font-bold text-lg py-4 rounded-2xl shadow-lg shadow-[#00A1A9]/30 dark:shadow-[#00A1A9]/20 active:scale-[0.98] transition-all flex items-center justify-center group">
+<button id="continueBtn" class="w-full bg-primary hover:opacity-90 text-white font-bold text-lg py-4 rounded-2xl shadow-lg shadow-[#00A1A9]/30 dark:shadow-[#00A1A9]/20 active:scale-[0.98] transition-all flex items-center justify-center group">
                 Continue
                 <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
 </button>
 </footer>
+<script>
+// Navigation handlers
+document.getElementById('continueBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.top.postMessage({ type: 'NAVIGATE', screen: 'medical_conditions_&_allergies' }, '*');
+});
+
+// Back button
+document.querySelector('button[aria-label="Go back"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.top.postMessage({ type: 'NAVIGATE', screen: 'add_new_profile_3' }, '*');
+});
+
+// Skip button
+var skipBtn = document.querySelector('button.text-primary');
+if (skipBtn && skipBtn.textContent.includes('Skip')) {
+    skipBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.top.postMessage({ type: 'NAVIGATE', screen: 'home_screen_-_healthcare_app_1' }, '*');
+    });
+}
+</script>
 </div>
 
 </body></html>

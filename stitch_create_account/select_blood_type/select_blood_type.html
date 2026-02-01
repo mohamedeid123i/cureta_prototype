@@ -46,7 +46,7 @@
   </head>
 <body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col text-slate-900 dark:text-slate-100">
 <header class="flex items-center px-4 py-3 bg-background-light dark:bg-background-dark sticky top-0 z-10">
-<button aria-label="Go back" class="p-2 -ml-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-slate-900 dark:text-white">
+<button id="backBtn" aria-label="Go back" class="p-2 -ml-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-slate-900 dark:text-white">
 <span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
 </button>
 <h1 class="flex-1 text-center text-lg font-semibold pr-8">Add Profile</h1>
@@ -136,21 +136,18 @@
 <div class="h-4"></div>
 </div>
 <script>
+// Review button
 document.getElementById('reviewBtn').addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
-    if (window.top !== window.self) {
-        window.top.postMessage({ type: 'NAVIGATE', screen: 'add_profile_-_review_&_confirm' }, '*');
-    }
+    window.top.postMessage({ type: 'NAVIGATE', screen: 'add_profile_-_review_&_confirm' }, '*');
 });
 
 // Back button
-document.querySelector('button[aria-label="Go back"]').addEventListener('click', function(e) {
+document.getElementById('backBtn').addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
-    if (window.top !== window.self) {
-        window.top.postMessage({ type: 'NAVIGATE', screen: 'medical_conditions_&_allergies' }, '*');
-    }
+    window.top.postMessage({ type: 'NAVIGATE', screen: 'medical_conditions_&_allergies' }, '*');
 });
 </script>
 
