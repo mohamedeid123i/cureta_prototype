@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cureta Health App - Phase 1 & 2 Prototype</title>
+    <title>Cureta Health App - Phase 1, 2 & 3 Prototype</title>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,6 +38,36 @@
             height: 100%;
             border: none;
             border-radius: 32px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        /* Slide animations for wizard flows */
+        .slide-in-right {
+            animation: slideInRight 0.3s ease forwards;
+        }
+        .slide-out-left {
+            animation: slideOutLeft 0.3s ease forwards;
+        }
+        .slide-in-left {
+            animation: slideInLeft 0.3s ease forwards;
+        }
+        .slide-out-right {
+            animation: slideOutRight 0.3s ease forwards;
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOutLeft {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(-100%); opacity: 0; }
+        }
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
         }
         .screen-indicator {
             position: fixed;
@@ -285,6 +315,85 @@
                     'home': 'home_screen_-_healthcare_app_2',
                     'settings': 'side_navigation_drawer_2'
                 }
+            },
+
+            // ===== PHASE 3: ADD FAMILY MEMBER WIZARD =====
+            'add_new_profile_1': {
+                triggers: ['next', 'continue'],
+                target: 'add_new_profile_2',
+                animation: 'slide',
+                icons: {
+                    'arrow_back': 'home_screen_-_healthcare_app_1',
+                    'arrow_back_ios_new': 'home_screen_-_healthcare_app_1',
+                    'close': 'home_screen_-_healthcare_app_1'
+                }
+            },
+            'add_new_profile_2': {
+                triggers: ['next', 'continue'],
+                target: 'add_new_profile_3',
+                animation: 'slide',
+                back: 'add_new_profile_1',
+                icons: {
+                    'arrow_back': 'add_new_profile_1',
+                    'arrow_back_ios_new': 'add_new_profile_1',
+                    'close': 'home_screen_-_healthcare_app_1'
+                }
+            },
+            'add_new_profile_3': {
+                triggers: ['next', 'continue'],
+                target: 'enter_your_age',
+                animation: 'slide',
+                back: 'add_new_profile_2',
+                icons: {
+                    'arrow_back': 'add_new_profile_2',
+                    'arrow_back_ios_new': 'add_new_profile_2',
+                    'close': 'home_screen_-_healthcare_app_1'
+                }
+            },
+            'enter_your_age': {
+                triggers: ['next', 'continue'],
+                target: 'medical_conditions_&_allergies',
+                animation: 'slide',
+                back: 'add_new_profile_3',
+                icons: {
+                    'arrow_back': 'add_new_profile_3',
+                    'arrow_back_ios_new': 'add_new_profile_3',
+                    'close': 'home_screen_-_healthcare_app_1'
+                }
+            },
+            'medical_conditions_&_allergies': {
+                triggers: ['next', 'continue'],
+                target: 'select_blood_type',
+                animation: 'slide',
+                back: 'enter_your_age',
+                icons: {
+                    'arrow_back': 'enter_your_age',
+                    'arrow_back_ios_new': 'enter_your_age',
+                    'close': 'home_screen_-_healthcare_app_1'
+                }
+            },
+            'select_blood_type': {
+                triggers: ['next', 'continue'],
+                target: 'add_profile_-_review_&_confirm',
+                animation: 'slide',
+                back: 'medical_conditions_&_allergies',
+                icons: {
+                    'arrow_back': 'medical_conditions_&_allergies',
+                    'arrow_back_ios_new': 'medical_conditions_&_allergies',
+                    'close': 'home_screen_-_healthcare_app_1'
+                }
+            },
+            'add_profile_-_review_&_confirm': {
+                triggers: ['confirm', 'save'],
+                target: 'home_screen_-_healthcare_app_1',
+                animation: 'slide',
+                back: 'select_blood_type',
+                icons: {
+                    'arrow_back': 'select_blood_type',
+                    'arrow_back_ios_new': 'select_blood_type',
+                    'arrow_back_ios': 'select_blood_type',
+                    'close': 'home_screen_-_healthcare_app_1'
+                }
             }
         };
 
@@ -455,6 +564,86 @@
                     if (text.includes('help') || iconText === 'help') {
                         showToast('Help & Support coming soon');
                         return;
+                    }
+                }
+
+                // === PHASE 3: Profile Screen (home_screen_-_healthcare_app_1) - Add Member trigger ===
+                if (screenName === 'home_screen_-_healthcare_app_1') {
+                    // Add Member button (dashed border card)
+                    if (text.includes('add member') || iconText === 'add' || 
+                        (target.classList.contains('border-dashed') || target.closest('[class*="border-dashed"]'))) {
+                        navigateWithAnimation('add_new_profile_1', 'forward');
+                        return;
+                    }
+                    // Back arrow
+                    if (iconText === 'arrow_back_ios_new' || iconText === 'arrow_back') {
+                        navigateTo('home_screen_-_healthcare_app_2');
+                        return;
+                    }
+                    // Chatbot FAB
+                    if (iconText === 'smart_toy') {
+                        navigateTo('cureta_health_assistant_chat');
+                        return;
+                    }
+                    // Bottom nav
+                    if (iconText === 'home') {
+                        navigateTo('home_screen_-_healthcare_app_2');
+                        return;
+                    }
+                    if (iconText === 'document_scanner') {
+                        navigateTo('scan_prescription_1');
+                        return;
+                    }
+                    if (iconText === 'folder') {
+                        navigateTo('my_medical_records');
+                        return;
+                    }
+                    if (iconText === 'medication') {
+                        navigateTo('medicine_alert');
+                        return;
+                    }
+                    // Edit profile button
+                    if (iconText === 'edit') {
+                        showToast('Edit Profile coming soon');
+                        return;
+                    }
+                }
+
+                // === PHASE 3: Add Family Member Wizard Navigation ===
+                const addProfileScreens = [
+                    'add_new_profile_1', 'add_new_profile_2', 'add_new_profile_3',
+                    'enter_your_age', 'medical_conditions_&_allergies', 'select_blood_type',
+                    'add_profile_-_review_&_confirm'
+                ];
+                if (addProfileScreens.includes(screenName)) {
+                    // Handle Cancel/Close - return to profiles
+                    if (iconText === 'close' || text.includes('cancel')) {
+                        navigateTo('home_screen_-_healthcare_app_1');
+                        return;
+                    }
+                    // Handle Back arrow
+                    if (iconText === 'arrow_back_ios_new' || iconText === 'arrow_back' || iconText === 'arrow_back_ios') {
+                        if (flow.back) {
+                            navigateWithAnimation(flow.back, 'back');
+                        } else if (flow.icons && (flow.icons['arrow_back'] || flow.icons['arrow_back_ios_new'] || flow.icons['arrow_back_ios'])) {
+                            const backTarget = flow.icons['arrow_back'] || flow.icons['arrow_back_ios_new'] || flow.icons['arrow_back_ios'];
+                            navigateWithAnimation(backTarget, 'back');
+                        } else {
+                            navigateTo('home_screen_-_healthcare_app_1');
+                        }
+                        return;
+                    }
+                    // Handle Next/Continue buttons
+                    if (text.includes('next') || text.includes('continue') || 
+                        text.includes('confirm') || text.includes('save')) {
+                        if (flow.target) {
+                            // Final screen confirmation
+                            if (screenName === 'add_profile_-_review_&_confirm') {
+                                showToast('Profile saved successfully!');
+                            }
+                            navigateWithAnimation(flow.target, 'forward');
+                            return;
+                        }
                     }
                 }
 
@@ -687,6 +876,46 @@
             if (!screenName || screenName === AppState.currentScreen) return;
             AppState.history.push(AppState.currentScreen);
             loadScreen(screenName);
+        }
+
+        // Phase 3: Navigate with slide animation
+        function navigateWithAnimation(screenName, direction) {
+            if (!screenName || screenName === AppState.currentScreen) return;
+            
+            const frame = document.getElementById('screenFrame');
+            
+            // Apply exit animation
+            if (direction === 'forward') {
+                frame.classList.add('slide-out-left');
+            } else {
+                frame.classList.add('slide-out-right');
+            }
+            
+            setTimeout(() => {
+                // Remove exit animation
+                frame.classList.remove('slide-out-left', 'slide-out-right');
+                
+                // Navigate
+                if (direction === 'forward') {
+                    AppState.history.push(AppState.currentScreen);
+                } else if (AppState.history.length > 0) {
+                    AppState.history.pop();
+                }
+                
+                // Load new screen with entry animation
+                if (direction === 'forward') {
+                    frame.classList.add('slide-in-right');
+                } else {
+                    frame.classList.add('slide-in-left');
+                }
+                
+                loadScreen(screenName);
+                
+                // Remove entry animation after it completes
+                setTimeout(() => {
+                    frame.classList.remove('slide-in-right', 'slide-in-left');
+                }, 300);
+            }, 250);
         }
 
         function goBack() {
