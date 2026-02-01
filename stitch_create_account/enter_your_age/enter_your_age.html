@@ -171,28 +171,38 @@
                 <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
 </button>
 </footer>
-<script>
-// Navigation handlers
-document.getElementById('continueBtn').addEventListener('click', function(e) {
-    e.preventDefault();
-    window.top.postMessage({ type: 'NAVIGATE', screen: 'medical_conditions_&_allergies' }, '*');
-});
-
-// Back button
-document.querySelector('button[aria-label="Go back"]').addEventListener('click', function(e) {
-    e.preventDefault();
-    window.top.postMessage({ type: 'NAVIGATE', screen: 'add_new_profile_3' }, '*');
-});
-
-// Skip button
-var skipBtn = document.querySelector('button.text-primary');
-if (skipBtn && skipBtn.textContent.includes('Skip')) {
-    skipBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.top.postMessage({ type: 'NAVIGATE', screen: 'home_screen_-_healthcare_app_1' }, '*');
-    });
-}
-</script>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Continue button
+    var continueBtn = document.getElementById('continueBtn');
+    if (continueBtn) {
+        continueBtn.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.top.postMessage({ type: 'NAVIGATE', screen: 'medical_conditions_&_allergies' }, '*');
+        };
+    }
 
+    // Back button
+    var backBtn = document.querySelector('button[aria-label="Go back"]');
+    if (backBtn) {
+        backBtn.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.top.postMessage({ type: 'NAVIGATE', screen: 'add_new_profile_3' }, '*');
+        };
+    }
+
+    // Skip button
+    var skipBtn = document.querySelector('header button:last-child');
+    if (skipBtn) {
+        skipBtn.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.top.postMessage({ type: 'NAVIGATE', screen: 'home_screen_-_healthcare_app_1' }, '*');
+        };
+    }
+});
+</script>
 </body></html>
