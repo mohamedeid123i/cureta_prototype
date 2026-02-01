@@ -67,10 +67,10 @@
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-300 antialiased overflow-hidden">
 <div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-2xl overflow-hidden">
 <header class="flex items-center justify-between p-4 pt-6 z-10">
-<button aria-label="Go back" class="flex items-center justify-center size-10 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-slate-800 dark:text-slate-200">
+<button id="backBtn" aria-label="Go back" class="flex items-center justify-center size-10 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-slate-800 dark:text-slate-200">
 <span class="material-symbols-outlined">arrow_back_ios_new</span>
 </button>
-<button class="px-4 py-2 text-primary font-semibold text-sm hover:opacity-80 transition-opacity">
+<button id="skipBtn" class="px-4 py-2 text-primary font-semibold text-sm hover:opacity-80 transition-opacity">
                 Skip
             </button>
 </header>
@@ -173,36 +173,41 @@
 </footer>
 </div>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Continue button
-    var continueBtn = document.getElementById('continueBtn');
-    if (continueBtn) {
-        continueBtn.onclick = function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.top.postMessage({ type: 'NAVIGATE', screen: 'medical_conditions_&_allergies' }, '*');
-        };
+(function() {
+    function navigate(screen) {
+        console.log('Navigating to:', screen);
+        try {
+            window.top.postMessage({ type: 'NAVIGATE', screen: screen }, '*');
+        } catch(e) {
+            console.error('Navigation error:', e);
+        }
     }
+    
+    // Continue button
+    document.getElementById('continueBtn').onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        navigate('medical_conditions_&_allergies');
+        return false;
+    };
 
     // Back button
-    var backBtn = document.querySelector('button[aria-label="Go back"]');
-    if (backBtn) {
-        backBtn.onclick = function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.top.postMessage({ type: 'NAVIGATE', screen: 'add_new_profile_3' }, '*');
-        };
-    }
+    document.getElementById('backBtn').onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        navigate('add_new_profile_3');
+        return false;
+    };
 
     // Skip button
-    var skipBtn = document.querySelector('header button:last-child');
-    if (skipBtn) {
-        skipBtn.onclick = function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.top.postMessage({ type: 'NAVIGATE', screen: 'home_screen_-_healthcare_app_1' }, '*');
-        };
-    }
-});
+    document.getElementById('skipBtn').onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        navigate('home_screen_-_healthcare_app_1');
+        return false;
+    };
+    
+    console.log('Enter your age navigation initialized');
+})();
 </script>
 </body></html>

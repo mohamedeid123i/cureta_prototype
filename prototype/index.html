@@ -468,7 +468,8 @@
                 'select_blood_type'
             ];
             if (wizardScreens.includes(screenName)) {
-                // These screens have their own JavaScript, don't intercept
+                // Don't add click interceptor - screens use postMessage
+                console.log('Wizard screen loaded:', screenName);
                 return;
             }
             
