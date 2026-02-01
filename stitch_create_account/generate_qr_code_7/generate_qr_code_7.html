@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>All Lab Results</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00a0a8",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#162e2f",
+                        "text-main-light": "#0c1c1d",
+                        "text-main-dark": "#e0e6e6",
+                        "text-sub-light": "#459ca1",
+                        "text-sub-dark": "#7fbcc0",
+                        "danger": "#e74c3c",
+                        "success": "#2ecc71",
+                        "warning": "#f39c12"
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main-light dark:text-text-main-dark transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden">
+<div class="flex items-center p-4 pb-2 justify-between sticky top-0 z-10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
+<button class="text-text-main-light dark:text-text-main-dark flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">All Lab Results</h2>
+<button class="text-text-main-light dark:text-text-main-dark flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col px-4 py-6 gap-4 w-full max-w-md mx-auto">
+<div class="flex items-center justify-between px-1 mb-2">
+<span class="text-sm font-medium text-text-sub-light dark:text-text-sub-dark">Showing 5 records</span>
+<button class="flex items-center gap-1 text-primary text-sm font-medium hover:underline">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                Filter
+            </button>
+</div>
+<button class="group w-full bg-surface-light dark:bg-surface-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center justify-between hover:shadow-md transition-all text-left">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-lg bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">hematology</span>
+</div>
+<div>
+<h4 class="font-bold text-base text-text-main-light dark:text-text-main-dark mb-0.5 group-hover:text-primary transition-colors">Comp. Metabolic Panel</h4>
+<div class="flex items-center gap-2">
+<span class="text-xs text-text-sub-light dark:text-text-sub-dark font-medium">Oct 24, 2023</span>
+<span class="text-[10px] text-gray-300 dark:text-gray-600">•</span>
+<span class="text-xs text-text-sub-light dark:text-text-sub-dark">Ref: #LB-992</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="px-2.5 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-bold border border-green-200 dark:border-green-800">
+                    Normal
+                </span>
+</div>
+</button>
+<button class="group w-full bg-surface-light dark:bg-surface-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center justify-between hover:shadow-md transition-all text-left">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">bloodtype</span>
+</div>
+<div>
+<h4 class="font-bold text-base text-text-main-light dark:text-text-main-dark mb-0.5 group-hover:text-primary transition-colors">Lipid Panel</h4>
+<div class="flex items-center gap-2">
+<span class="text-xs text-text-sub-light dark:text-text-sub-dark font-medium">Oct 24, 2023</span>
+<span class="text-[10px] text-gray-300 dark:text-gray-600">•</span>
+<span class="text-xs text-text-sub-light dark:text-text-sub-dark">Ref: #LB-991</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="px-2.5 py-1 rounded-full bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-xs font-bold border border-red-200 dark:border-red-800">
+                    Abnormal
+                </span>
+</div>
+</button>
+<button class="group w-full bg-surface-light dark:bg-surface-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center justify-between hover:shadow-md transition-all text-left">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">science</span>
+</div>
+<div>
+<h4 class="font-bold text-base text-text-main-light dark:text-text-main-dark mb-0.5 group-hover:text-primary transition-colors">Hemoglobin A1c</h4>
+<div class="flex items-center gap-2">
+<span class="text-xs text-text-sub-light dark:text-text-sub-dark font-medium">Sep 15, 2023</span>
+<span class="text-[10px] text-gray-300 dark:text-gray-600">•</span>
+<span class="text-xs text-text-sub-light dark:text-text-sub-dark">Ref: #LB-840</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="px-2.5 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-bold border border-green-200 dark:border-green-800">
+                    Normal
+                </span>
+</div>
+</button>
+<button class="group w-full bg-surface-light dark:bg-surface-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center justify-between hover:shadow-md transition-all text-left">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">endocrinology</span>
+</div>
+<div>
+<h4 class="font-bold text-base text-text-main-light dark:text-text-main-dark mb-0.5 group-hover:text-primary transition-colors">Thyroid Panel (TSH)</h4>
+<div class="flex items-center gap-2">
+<span class="text-xs text-text-sub-light dark:text-text-sub-dark font-medium">Aug 02, 2023</span>
+<span class="text-[10px] text-gray-300 dark:text-gray-600">•</span>
+<span class="text-xs text-text-sub-light dark:text-text-sub-dark">Ref: #LB-712</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="px-2.5 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-bold border border-green-200 dark:border-green-800">
+                    Normal
+                </span>
+</div>
+</button>
+<button class="group w-full bg-surface-light dark:bg-surface-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center justify-between hover:shadow-md transition-all text-left">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">wb_sunny</span>
+</div>
+<div>
+<h4 class="font-bold text-base text-text-main-light dark:text-text-main-dark mb-0.5 group-hover:text-primary transition-colors">Vitamin D (25-OH)</h4>
+<div class="flex items-center gap-2">
+<span class="text-xs text-text-sub-light dark:text-text-sub-dark font-medium">Jun 10, 2023</span>
+<span class="text-[10px] text-gray-300 dark:text-gray-600">•</span>
+<span class="text-xs text-text-sub-light dark:text-text-sub-dark">Ref: #LB-605</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="px-2.5 py-1 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-xs font-bold border border-orange-200 dark:border-orange-800">
+                    Low
+                </span>
+</div>
+</button>
+<div class="h-6 w-full flex items-center justify-center text-text-sub-light/50 text-xs mt-4">
+            End of records
+        </div>
+</div>
+</div>
+
+</body></html>

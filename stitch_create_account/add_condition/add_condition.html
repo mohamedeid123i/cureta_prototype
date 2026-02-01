@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add Condition - Step 1</title>
+<!-- Google Fonts: Lexend -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00a0a8",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#162e2f",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem", 
+                        "lg": "1rem", 
+                        "xl": "1.5rem", 
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 15px rgba(0, 160, 168, 0.3)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto shadow-2xl bg-background-light dark:bg-background-dark">
+<!-- Header Navigation -->
+<header class="flex items-center justify-between p-4 pt-6">
+<button aria-label="Go back" class="flex items-center justify-center size-10 rounded-full text-gray-800 dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+</button>
+<button class="text-gray-500 dark:text-gray-400 text-base font-medium hover:text-primary dark:hover:text-primary transition-colors">
+                Cancel
+            </button>
+</header>
+<!-- Progress Indicator -->
+<div class="px-6 py-2">
+<div class="flex justify-between items-end mb-2">
+<span class="text-sm font-semibold text-primary uppercase tracking-wider">Step 1 of 5</span>
+<span class="text-xs text-gray-400 dark:text-gray-500 font-medium">20% completed</span>
+</div>
+<div class="h-2 w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[20%]"></div>
+</div>
+</div>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col px-6 pt-6 pb-4">
+<!-- Headline -->
+<h1 class="text-3xl md:text-4xl font-bold leading-tight text-gray-900 dark:text-white mb-8 tracking-tight">
+                What is the disease or condition?
+            </h1>
+<!-- Input Field -->
+<div class="w-full mb-3">
+<div class="relative group">
+<input class="peer w-full h-16 px-6 rounded-2xl bg-surface-light dark:bg-surface-dark border-2 border-transparent focus:border-primary/50 text-lg md:text-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 outline-none shadow-soft transition-all duration-300" placeholder="Type here..." type="text"/>
+<!-- Focus ring visual aid -->
+<div class="absolute inset-0 rounded-2xl pointer-events-none border border-black/5 dark:border-white/10 peer-focus:border-primary peer-focus:ring-4 peer-focus:ring-primary/10 transition-all duration-300"></div>
+</div>
+</div>
+<!-- Helper Text -->
+<div class="flex items-start gap-2 px-2">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">info</span>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-relaxed">
+                    e.g. Diabetes, Allergy, High blood pressure
+                </p>
+</div>
+<!-- Spacer to push button to bottom -->
+<div class="flex-grow"></div>
+<!-- Action Button -->
+<div class="mt-auto pt-6 pb-6">
+<button class="w-full h-14 bg-primary hover:bg-primary/90 active:scale-[0.98] text-white text-lg font-bold rounded-2xl shadow-lg shadow-primary/30 flex items-center justify-center gap-2 transition-all duration-200">
+                    Next
+                    <span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</div>
+</main>
+</div>
+</body></html>

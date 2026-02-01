@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Filter Records</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00A1A9",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#183032",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px" },
+                    animation: {
+                        "slide-up": "slideUp 0.3s ease-out forwards",
+                        "fadeIn": "fadeIn 0.2s ease-out forwards",
+                    },
+                    keyframes: {
+                        slideUp: {
+                            "0%": { transform: "translateY(100%)" },
+                            "100%": { transform: "translateY(0)" },
+                        },
+                        fadeIn: {
+                            "0%": { opacity: "0", transform: "translateY(-10px)" },
+                            "100%": { opacity: "1", transform: "translateY(0)" },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-gray-900/40 font-display antialiased backdrop-blur-sm h-screen w-full overflow-hidden flex flex-col justify-end">
+<div class="relative w-full max-w-md mx-auto bg-surface-light dark:bg-surface-dark rounded-t-[2rem] shadow-2xl h-[85vh] flex flex-col overflow-hidden animate-slide-up">
+<div class="flex-none pt-3 pb-2 bg-surface-light dark:bg-surface-dark z-10 border-b border-transparent">
+<div class="flex justify-center w-full mb-2">
+<div class="h-1.5 w-12 rounded-full bg-slate-200 dark:bg-slate-600"></div>
+</div>
+<div class="flex items-center justify-between px-6 pt-2">
+<h2 class="text-slate-900 dark:text-white tracking-tight text-2xl font-bold leading-tight">Filter records</h2>
+<button class="text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto no-scrollbar px-6 pb-6">
+<div class="pt-6">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">healing</span>
+    Filter by Disease
+</h3>
+<div class="relative group">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors text-xl">search</span>
+</div>
+<input class="block w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-background-dark py-4 pl-12 pr-4 text-base font-medium text-slate-900 dark:text-white placeholder-slate-400 shadow-sm focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Search disease name..." type="text"/>
+</div>
+</div>
+<div class="h-px w-full bg-slate-100 dark:bg-slate-700 my-8"></div>
+<div>
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">calendar_month</span>
+                    Timeframe
+                </h3>
+<div class="flex flex-col gap-3" style="--radio-dot-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(0,161,169)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%273.5%27/%3e%3c/svg%3e');">
+<label class="group flex items-center gap-4 rounded-xl border border-solid border-slate-200 dark:border-slate-700 bg-white dark:bg-background-dark p-4 flex-row-reverse cursor-pointer transition-colors hover:border-primary/50">
+<input class="h-6 w-6 border-2 border-slate-300 dark:border-slate-600 bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary transition-all" name="timeframe" type="radio"/>
+<div class="flex grow flex-col">
+<p class="text-slate-900 dark:text-white text-base font-medium leading-normal group-hover:text-primary transition-colors">All time</p>
+</div>
+</label>
+<label class="group flex items-center gap-4 rounded-xl border border-solid border-slate-200 dark:border-slate-700 bg-white dark:bg-background-dark p-4 flex-row-reverse cursor-pointer transition-colors hover:border-primary/50">
+<input class="h-6 w-6 border-2 border-slate-300 dark:border-slate-600 bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary transition-all" name="timeframe" type="radio"/>
+<div class="flex grow flex-col">
+<p class="text-slate-900 dark:text-white text-base font-medium leading-normal group-hover:text-primary transition-colors">Last 3 months</p>
+</div>
+</label>
+<label class="group flex items-center gap-4 rounded-xl border border-solid border-slate-200 dark:border-slate-700 bg-white dark:bg-background-dark p-4 flex-row-reverse cursor-pointer transition-colors hover:border-primary/50">
+<input class="h-6 w-6 border-2 border-slate-300 dark:border-slate-600 bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary transition-all" name="timeframe" type="radio"/>
+<div class="flex grow flex-col">
+<p class="text-slate-900 dark:text-white text-base font-medium leading-normal group-hover:text-primary transition-colors">Last 6 months</p>
+</div>
+</label>
+<label class="group flex items-center gap-4 rounded-xl border border-solid border-slate-200 dark:border-slate-700 bg-white dark:bg-background-dark p-4 flex-row-reverse cursor-pointer transition-colors hover:border-primary/50">
+<input class="h-6 w-6 border-2 border-slate-300 dark:border-slate-600 bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary transition-all" name="timeframe" type="radio"/>
+<div class="flex grow flex-col">
+<p class="text-slate-900 dark:text-white text-base font-medium leading-normal group-hover:text-primary transition-colors">This year</p>
+</div>
+</label>
+<label class="group flex flex-col gap-4 rounded-xl border border-solid border-slate-200 dark:border-slate-700 bg-white dark:bg-background-dark p-4 cursor-pointer transition-all hover:border-primary/50 has-[:checked]:border-primary has-[:checked]:bg-slate-50/50 dark:has-[:checked]:bg-slate-800/20">
+<div class="flex items-center gap-4 flex-row-reverse w-full">
+<input checked="" class="h-6 w-6 border-2 border-slate-300 dark:border-slate-600 bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary transition-all peer" id="custom-range" name="timeframe" type="radio"/>
+<div class="flex grow flex-col">
+<p class="text-slate-900 dark:text-white text-base font-medium leading-normal group-hover:text-primary peer-checked:text-primary transition-colors">Custom date range</p>
+</div>
+</div>
+<div class="hidden peer-checked:flex flex-col gap-6 w-full animate-fadeIn pt-4 border-t border-slate-100 dark:border-slate-700/50 mt-1">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2 ml-1">
+<span class="material-symbols-outlined text-primary text-lg">calendar_today</span>
+<label class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Start Date</label>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-700 rounded-2xl shadow-sm p-4">
+<div class="flex items-center justify-between mb-4 px-1">
+<button class="h-8 w-8 flex items-center justify-center rounded-full text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-xl">chevron_left</span>
+</button>
+<span class="text-base font-bold text-slate-900 dark:text-white">October 2024</span>
+<button class="h-8 w-8 flex items-center justify-center rounded-full text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-7 mb-2 text-center">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">S</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">M</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">T</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">W</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">T</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">F</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">S</span>
+</div>
+<div class="grid grid-cols-7 gap-1 place-items-center">
+<span class="h-9 w-9"></span><span class="h-9 w-9"></span>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">1</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">2</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">3</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">4</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">5</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">6</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">7</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">8</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">9</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">10</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">11</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full bg-primary text-white text-base font-bold shadow-md shadow-primary/30 transform scale-105 transition-all" type="button">12</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">13</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">14</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">15</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">16</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">17</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">18</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">19</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">20</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">21</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">22</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">23</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">24</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">25</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">26</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">27</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">28</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">29</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">30</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">31</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2 ml-1">
+<span class="material-symbols-outlined text-primary text-lg">event</span>
+<label class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">End Date</label>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-700 rounded-2xl shadow-sm p-4">
+<div class="flex items-center justify-between mb-4 px-1">
+<button class="h-8 w-8 flex items-center justify-center rounded-full text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-xl">chevron_left</span>
+</button>
+<span class="text-base font-bold text-slate-900 dark:text-white">November 2024</span>
+<button class="h-8 w-8 flex items-center justify-center rounded-full text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-7 mb-2 text-center">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">S</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">M</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">T</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">W</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">T</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">F</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">S</span>
+</div>
+<div class="grid grid-cols-7 gap-1 place-items-center">
+<span class="h-9 w-9"></span><span class="h-9 w-9"></span><span class="h-9 w-9"></span><span class="h-9 w-9"></span><span class="h-9 w-9"></span>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">1</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">2</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">3</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">4</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full bg-primary text-white text-base font-bold shadow-md shadow-primary/30 transform scale-105 transition-all" type="button">5</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">6</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">7</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">8</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">9</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">10</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">11</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">12</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">13</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">14</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">15</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">16</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">17</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">18</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">19</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">20</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">21</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">22</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">23</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">24</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">25</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">26</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">27</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">28</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">29</button>
+<button class="h-9 w-9 flex items-center justify-center rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" type="button">30</button>
+</div>
+</div>
+</div>
+</div>
+</label>
+</div>
+</div>
+<div class="h-px w-full bg-slate-100 dark:bg-slate-700 my-8"></div>
+<div>
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">sort</span>
+                    Sort by
+                </h3>
+<div class="flex flex-wrap gap-2">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="sort" type="radio"/>
+<div class="rounded-full border border-primary bg-primary/10 px-5 py-2.5 text-sm font-semibold text-primary transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:shadow-md peer-checked:shadow-primary/30 dark:bg-primary/20 dark:text-primary dark:peer-checked:text-white">
+                            Newest first
+                        </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="sort" type="radio"/>
+<div class="rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-transparent px-5 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-400 transition-all hover:bg-slate-50 dark:hover:bg-slate-800 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white peer-checked:shadow-md dark:peer-checked:bg-primary dark:peer-checked:text-white">
+                            Oldest first
+                        </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="sort" type="radio"/>
+<div class="rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-transparent px-5 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-400 transition-all hover:bg-slate-50 dark:hover:bg-slate-800 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white peer-checked:shadow-md dark:peer-checked:bg-primary dark:peer-checked:text-white">
+                            Disease name (A–Z)
+                        </div>
+</label>
+</div>
+</div>
+<div class="h-24"></div>
+</div>
+<div class="flex-none p-6 pt-4 bg-surface-light dark:bg-surface-dark border-t border-slate-100 dark:border-slate-800 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] dark:shadow-none z-20">
+<button class="flex w-full items-center justify-center rounded-xl bg-primary py-4 px-4 text-base font-bold text-white shadow-lg shadow-primary/25 transition-transform active:scale-[0.98] hover:bg-primary/90">
+                Apply filters
+            </button>
+<button class="mt-3 flex w-full items-center justify-center rounded-xl py-3 px-4 text-sm font-semibold text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-300 transition-colors">
+                Clear filters
+            </button>
+<div class="h-2"></div>
+</div>
+</div>
+</body></html>

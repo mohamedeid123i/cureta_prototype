@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Health Record Details</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#009da8",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "soft": "0 4px 20px -2px rgba(0, 0, 0, 0.05)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white min-h-screen relative flex flex-col pb-48 selection:bg-primary/20">
+<header class="flex items-center justify-between p-4 sticky top-0 z-30 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm transition-colors duration-300">
+<button aria-label="Go back" class="flex items-center justify-center size-12 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-slate-800 dark:text-white">
+<span class="material-symbols-outlined text-[28px]">arrow_back</span>
+</button>
+<h2 class="text-lg font-bold text-slate-800 dark:text-slate-100 opacity-0 transition-opacity duration-300 pointer-events-none absolute left-1/2 -translate-x-1/2" id="scrolled-title">
+            Record Details
+        </h2>
+<button aria-label="Options" class="flex items-center justify-center size-12 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-slate-800 dark:text-white">
+<span class="material-symbols-outlined text-[28px]">more_vert</span>
+</button>
+</header>
+<main class="flex-1 w-full max-w-lg mx-auto px-6 flex flex-col gap-8">
+<div class="flex flex-col gap-4 pt-2">
+<h1 class="text-[40px] leading-[1.1] font-extrabold text-slate-900 dark:text-white tracking-tight">
+                Hypertension
+            </h1>
+<div class="flex flex-wrap gap-3">
+<div class="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-primary/10 dark:bg-primary/20 px-5 pr-6 border border-primary/10">
+<span class="material-symbols-outlined text-primary text-[20px] font-bold">cached</span>
+<span class="text-primary font-bold text-sm tracking-wide uppercase">Ongoing</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-6">
+<div class="flex flex-col gap-1.5">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider pl-1">Diagnosed on</p>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">calendar_today</span>
+<p class="text-2xl font-bold text-slate-800 dark:text-slate-100">Oct 24, 2023</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="text-xl font-bold text-slate-900 dark:text-white pl-1">Notes</h3>
+<div class="bg-white dark:bg-slate-800/50 p-6 rounded-2xl shadow-soft border border-slate-100 dark:border-slate-800">
+<p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+                    Taking 5mg Amlodipine daily after breakfast. Monitor BP weekly and record values in the log. Patient reports feeling slightly better but needs to reduce salt intake.
+                </p>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between pl-1 pr-1">
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Documents &amp; Files</h3>
+<span class="text-sm font-bold text-primary cursor-pointer hover:underline">View All</span>
+</div>
+<div class="flex flex-col gap-3">
+<button class="group flex items-center gap-4 bg-white dark:bg-slate-800/50 p-4 rounded-2xl shadow-soft border border-slate-100 dark:border-slate-800 text-left w-full hover:border-primary/30 hover:shadow-md transition-all active:scale-[0.99]">
+<div class="size-14 rounded-xl bg-red-50 dark:bg-red-900/20 text-red-500 dark:text-red-400 flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[32px]">picture_as_pdf</span>
+</div>
+<div class="flex-1 min-w-0 flex flex-col gap-0.5">
+<p class="font-bold text-lg text-slate-800 dark:text-slate-100 truncate group-hover:text-primary transition-colors">Blood_Test_Oct24.pdf</p>
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Lab Report • 2.4 MB</p>
+</div>
+<div class="size-10 rounded-full bg-slate-50 dark:bg-slate-700/50 flex items-center justify-center text-slate-400 group-hover:text-primary group-hover:bg-primary/10 transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</button>
+<button class="group flex items-center gap-4 bg-white dark:bg-slate-800/50 p-4 rounded-2xl shadow-soft border border-slate-100 dark:border-slate-800 text-left w-full hover:border-primary/30 hover:shadow-md transition-all active:scale-[0.99]">
+<div class="size-14 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-500 dark:text-blue-400 flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[32px]">image</span>
+</div>
+<div class="flex-1 min-w-0 flex flex-col gap-0.5">
+<p class="font-bold text-lg text-slate-800 dark:text-slate-100 truncate group-hover:text-primary transition-colors">Prescription_Slip.jpg</p>
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Prescription • 1.2 MB</p>
+</div>
+<div class="size-10 rounded-full bg-slate-50 dark:bg-slate-700/50 flex items-center justify-center text-slate-400 group-hover:text-primary group-hover:bg-primary/10 transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</button>
+</div>
+</div>
+</main>
+<div class="fixed bottom-0 left-0 w-full z-40 px-6 pb-6 pt-12 bg-gradient-to-t from-background-light from-60% via-background-light to-transparent dark:from-background-dark dark:from-60% dark:via-background-dark pointer-events-none">
+<div class="max-w-lg mx-auto pointer-events-auto flex flex-col gap-3">
+<button class="w-full h-16 bg-primary hover:bg-[#008c96] text-white rounded-2xl font-bold text-[19px] shadow-lg shadow-primary/30 flex items-center justify-center gap-3 transition-all active:scale-[0.98] active:shadow-none">
+<span class="material-symbols-outlined text-[24px]">edit_document</span>
+                Edit Record
+            </button>
+<button class="w-full h-12 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-xl font-bold text-[17px] flex items-center justify-center gap-2 transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+                Delete Record
+            </button>
+</div>
+</div>
+<script>
+        window.addEventListener('scroll', () => {
+            const title = document.getElementById('scrolled-title');
+            if (window.scrollY > 60) {
+                title.classList.remove('opacity-0');
+            } else {
+                title.classList.add('opacity-0');
+            }
+        });
+    </script>
+</body></html>

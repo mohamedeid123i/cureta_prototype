@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Update Health Data</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00a0a8",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>body {
+    font-family: "Lexend", sans-serif
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.custom-select {
+    appearance: none;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuA3zSnUgU3Wb21-V8r2vYnE_xB3BdzDJJ22_xg672e8FoaxC5BehL1wQs23uNjhvov0_6OYUBW6GwDO0dr4GhqWE2gF0LuMHzGALJhZV71JQ9hjfG-q6lJvCoZSMrMEqoKaSAAKJUqMwu9cDXDfeVi7bJ6xDFJhexALAIFpugBDQxO-e68JDBjeikOItbzSI0Ajj5tu-HgqBdRMB7BgOpQG1J6GZKpZTT9Kz7W9sWfL_s8PCTvJSspVvsuUqb6FN_ZsRPGY5cCIlS3S);
+    background-position: right 1rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0c1c1d] dark:text-white min-h-screen pb-40">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+<div class="flex items-center p-4 justify-between max-w-lg mx-auto">
+<button aria-label="Go back" class="text-primary flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h1 class="text-[#0c1c1d] dark:text-white text-lg font-bold leading-tight flex-1 text-center pr-10">Update Health Data</h1>
+</div>
+</header>
+<main class="max-w-lg mx-auto px-4 py-6 space-y-8">
+<!-- Profile Header -->
+<div class="flex items-center gap-4 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-20 w-20 border-2 border-primary/20" data-alt="Elderly man smiling kindly" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDpTVfQbSY3uyJsxfelqMcB55UDWb9Y_U6O_w8UT3LyxqrLywGVz8DEaMbSMLW5qPybiyoxzNo24OkbYFEtlJ_yRP-riOYU5UjguY_znMcJJek4OtI9_V2i94BSzVOoB-zh3D8gGYJ9KY8ApJBmxOYMhcW9p7y9DP8FOv_SBML3_g6cvNs8rTD0vq0Z8JWtyFHrFBc9qZuNjGjP_OjRbRVI0Z64-1NLSsSK-4Y-JJLV8DtlPU3wnzfv0IQMKW90NAeaDLZekOPpjeCs");'>
+</div>
+<div class="flex flex-col">
+<p class="text-[#0c1c1d] dark:text-white text-xl font-bold">Robert Smith</p>
+<p class="text-primary text-base font-medium">Father</p>
+<div class="flex items-center gap-1 mt-1 opacity-70">
+<span class="material-symbols-outlined text-sm">history</span>
+<p class="text-xs">Updated 2 weeks ago</p>
+</div>
+</div>
+</div>
+<!-- General Info Section -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-primary">info</span>
+<h3 class="text-[#0c1c1d] dark:text-white text-lg font-bold">General Info</h3>
+</div>
+<div class="bg-white dark:bg-gray-900 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 space-y-4">
+<div class="flex flex-col gap-2">
+<label class="text-[#0c1c1d] dark:text-gray-300 text-base font-medium">Age</label>
+<input class="w-full rounded-xl border border-[#cde8ea] dark:border-gray-700 bg-background-light dark:bg-gray-800 text-[#0c1c1d] dark:text-white focus:ring-2 focus:ring-primary focus:border-primary h-14 p-4 text-lg font-medium" placeholder="Enter age" type="number" value="72"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[#0c1c1d] dark:text-gray-300 text-base font-medium">Gender</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex-1 py-3 px-2 rounded-lg border-2 border-primary bg-primary/10 text-primary font-bold">Male</button>
+<button class="flex-1 py-3 px-2 rounded-lg border border-[#cde8ea] dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-500 font-medium">Female</button>
+<button class="flex-1 py-3 px-2 rounded-lg border border-[#cde8ea] dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-500 font-medium">Other</button>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[#0c1c1d] dark:text-gray-300 text-base font-medium">Blood Type</label>
+<select class="custom-select w-full rounded-xl border border-[#cde8ea] dark:border-gray-700 bg-background-light dark:bg-gray-800 text-[#0c1c1d] dark:text-white focus:ring-2 focus:ring-primary focus:border-primary h-14 px-4 text-lg font-medium">
+<option value="A+">A Positive (A+)</option>
+<option value="A-">A Negative (A-)</option>
+<option selected="" value="B+">B Positive (B+)</option>
+<option value="B-">B Negative (B-)</option>
+<option value="AB+">AB Positive (AB+)</option>
+<option value="AB-">AB Negative (AB-)</option>
+<option value="O+">O Positive (O+)</option>
+<option value="O-">O Negative (O-)</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Medical History Section -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-primary">medical_services</span>
+<h3 class="text-[#0c1c1d] dark:text-white text-lg font-bold">Medical History</h3>
+</div>
+<div class="bg-white dark:bg-gray-900 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 space-y-6">
+<div>
+<label class="text-[#0c1c1d] dark:text-gray-300 text-base font-medium mb-3 block">Chronic Diseases</label>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-primary text-white text-sm font-semibold">
+                            Hypertension <span class="material-symbols-outlined text-sm">close</span>
+</span>
+<span class="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-primary text-white text-sm font-semibold">
+                            Type 2 Diabetes <span class="material-symbols-outlined text-sm">close</span>
+</span>
+<button class="inline-flex items-center gap-1 px-4 py-2 rounded-full border-2 border-dashed border-primary/40 text-primary text-sm font-semibold">
+<span class="material-symbols-outlined text-sm">add</span> Add New
+                        </button>
+</div>
+</div>
+<div>
+<label class="text-[#0c1c1d] dark:text-gray-300 text-base font-medium mb-3 block">Allergies</label>
+<textarea class="w-full rounded-xl border border-[#cde8ea] dark:border-gray-700 bg-background-light dark:bg-gray-800 text-[#0c1c1d] dark:text-white focus:ring-2 focus:ring-primary focus:border-primary p-4 text-base min-h-[100px]" placeholder="List any allergies (e.g., Penicillin, Peanuts)">Penicillin, Dust Mites</textarea>
+<div class="mt-3 flex items-center gap-3">
+<input class="rounded text-primary focus:ring-primary w-5 h-5 border-gray-300" id="no-allergies" type="checkbox"/>
+<label class="text-gray-600 dark:text-gray-400 text-sm" for="no-allergies">No known allergies</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Medications Section -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-primary">pill</span>
+<h3 class="text-[#0c1c1d] dark:text-white text-lg font-bold">Medications</h3>
+</div>
+<div class="space-y-3">
+<div class="bg-white dark:bg-gray-900 p-4 rounded-xl border border-gray-100 dark:border-gray-800 flex justify-between items-center shadow-sm">
+<div>
+<p class="font-bold text-[#0c1c1d] dark:text-white">Metformin</p>
+<p class="text-sm text-gray-500">500mg - Twice daily</p>
+</div>
+<button class="text-gray-400 hover:text-red-500">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<div class="bg-white dark:bg-gray-900 p-4 rounded-xl border border-gray-100 dark:border-gray-800 flex justify-between items-center shadow-sm">
+<div>
+<p class="font-bold text-[#0c1c1d] dark:text-white">Lisinopril</p>
+<p class="text-sm text-gray-500">10mg - Once daily</p>
+</div>
+<button class="text-gray-400 hover:text-red-500">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<button class="w-full py-4 rounded-xl border-2 border-dashed border-primary/30 text-primary font-bold flex items-center justify-center gap-2 hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined">add_circle</span> Add Medication
+                </button>
+</div>
+</section>
+</main>
+<!-- Fixed Bottom Footer -->
+<footer class="fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg border-t border-gray-200 dark:border-gray-800 p-6 z-50">
+<div class="max-w-lg mx-auto flex flex-col gap-4">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold text-lg py-4 rounded-xl shadow-lg shadow-primary/20 transition-transform active:scale-95">
+                Save Changes
+            </button>
+<button class="w-full text-gray-500 dark:text-gray-400 font-medium text-base py-1 hover:text-primary transition-colors">
+                Cancel
+            </button>
+</div>
+</footer>
+</body></html>

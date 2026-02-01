@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Healthcare App Home Screen</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00A1A9",
+                        "background-light": "#FFFFFF",
+                        "background-dark": "#0f2223",
+                        "surface-light": "#F8F9FA",
+                        "surface-dark": "#1a2c2d",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"],
+                        "body": ["Lexend", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'nav': '0 -4px 20px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0c1c1d] dark:text-white transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-2xl">
+<input class="peer hidden" id="drawer-toggle" type="checkbox"/>
+<label class="absolute inset-0 z-40 bg-black/40 backdrop-blur-[2px] opacity-0 pointer-events-none peer-checked:opacity-100 peer-checked:pointer-events-auto transition-opacity duration-300" for="drawer-toggle"></label>
+<aside class="absolute top-0 left-0 z-50 h-full w-[80%] max-w-[300px] bg-white dark:bg-background-dark shadow-2xl transform -translate-x-full peer-checked:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col">
+<div class="p-6 pb-2">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">local_hospital</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight text-[#0c1c1d] dark:text-white">Health<span class="text-primary">Plus</span></h2>
+</div>
+<label class="size-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-surface-dark cursor-pointer text-gray-500 transition-colors" for="drawer-toggle">
+<span class="material-symbols-outlined">close</span>
+</label>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto px-4 py-2 space-y-2">
+<a class="flex items-center gap-4 px-4 py-3.5 bg-primary/10 text-primary rounded-xl font-medium" href="#">
+<span class="material-symbols-outlined filled">home</span> Home
+            </a>
+<a class="flex items-center gap-4 px-4 py-3.5 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-surface-dark rounded-xl font-medium transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span> Appointments
+            </a>
+<a class="flex items-center gap-4 px-4 py-3.5 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-surface-dark rounded-xl font-medium transition-colors" href="#">
+<span class="material-symbols-outlined">vaccines</span> Vaccinations
+            </a>
+<a class="flex items-center gap-4 px-4 py-3.5 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-surface-dark rounded-xl font-medium transition-colors" href="#">
+<span class="material-symbols-outlined">lab_profile</span> Lab Results
+            </a>
+<a class="flex items-center gap-4 px-4 py-3.5 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-surface-dark rounded-xl font-medium transition-colors" href="#">
+<span class="material-symbols-outlined">health_and_safety</span> Insurance
+            </a>
+<div class="my-4 border-t border-gray-100 dark:border-gray-800"></div>
+<a class="flex items-center gap-4 px-4 py-3.5 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-surface-dark rounded-xl font-medium transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+<a class="flex items-center gap-4 px-4 py-3.5 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-surface-dark rounded-xl font-medium transition-colors" href="#">
+<span class="material-symbols-outlined">help</span> Help &amp; Support
+            </a>
+</div>
+<div class="p-6 border-t border-gray-100 dark:border-gray-800">
+<button class="flex items-center gap-3 text-red-500 font-medium hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">logout</span> Sign Out
+            </button>
+</div>
+</aside>
+<header class="flex items-center justify-between px-6 pt-12 pb-4 bg-background-light dark:bg-background-dark sticky top-0 z-20">
+<div class="flex items-center gap-4">
+<label class="p-2 -ml-2 rounded-full hover:bg-gray-100 dark:hover:bg-surface-dark text-[#0c1c1d] dark:text-white transition-colors cursor-pointer" for="drawer-toggle">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</label>
+<button class="group flex items-center gap-3 focus:outline-none">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-white dark:ring-background-dark shadow-sm" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwsP9b7YH4tZxF8TFAgdgFzBIlopdF2OZg3qbIvG0f-1D8yxocYMBfZ5PonNw9dtW8IDJ-6dbjws7MK9PPKBPqVzH5Zf86CJG5yXRgLyPrzrNtgLDJmnur4BGycvtWFclktWpPdocoDI_t1eBIaGQIOsuswHXlfyjlq9JJ9ic8dpmtLwu32YDZS3Zrj0saYx4RQzpHBNkf6__p9UxBGzZShyD2hblIDSZVQgzBoTB5FQ_IGZpQ7M_RBV1obp4-msNtx8Gajoo4NFxO");'></div>
+<div class="absolute -bottom-1 -right-1 bg-white dark:bg-surface-dark rounded-full p-0.5 border border-gray-100 dark:border-gray-700 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[10px] font-bold">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col items-start">
+<span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Welcome Back</span>
+<h2 class="text-lg font-bold leading-tight tracking-tight">Sarah</h2>
+</div>
+</button>
+</div>
+<div class="flex items-center gap-3">
+<button class="size-10 flex items-center justify-center rounded-full bg-surface-light dark:bg-surface-dark text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto pb-32">
+<div class="w-full px-6 pt-2 pb-6">
+<div class="grid grid-cols-3 gap-3">
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-full aspect-square rounded-2xl bg-white dark:bg-surface-dark shadow-soft border border-gray-50 dark:border-gray-800 flex items-center justify-center group-active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-[32px] text-primary">note_add</span>
+</div>
+<span class="text-[11px] font-semibold text-gray-600 dark:text-gray-300 text-center leading-tight">Add Record</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-full aspect-square rounded-2xl bg-white dark:bg-surface-dark shadow-soft border border-gray-50 dark:border-gray-800 flex items-center justify-center group-active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-[32px] text-primary">add_alert</span>
+</div>
+<span class="text-[11px] font-semibold text-gray-600 dark:text-gray-300 text-center leading-tight">Add Alert</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-full aspect-square rounded-2xl bg-white dark:bg-surface-dark shadow-soft border border-gray-50 dark:border-gray-800 flex items-center justify-center group-active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-[32px] text-primary">qr_code_2</span>
+</div>
+<span class="text-[11px] font-semibold text-gray-600 dark:text-gray-300 text-center leading-tight">My QR Code</span>
+</button>
+</div>
+</div>
+<div class="px-6 mb-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-[#0c1c1d] dark:text-white text-lg font-bold leading-tight">Upcoming Meds</h3>
+<button class="text-primary text-sm font-semibold">See All</button>
+</div>
+<div class="flex flex-col gap-3">
+<label class="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-surface-dark shadow-soft border border-gray-50 dark:border-gray-800 cursor-pointer group transition-all hover:border-primary/30">
+<div class="flex flex-col items-center justify-center size-12 rounded-xl bg-gray-50 dark:bg-gray-800 text-gray-500 font-bold text-xs leading-none shrink-0">
+<span>08</span><span>AM</span>
+</div>
+<div class="flex-1">
+<p class="text-[#0c1c1d] dark:text-white text-base font-semibold leading-tight">Amoxicillin</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm mt-0.5">500mg • After meal</p>
+</div>
+<input class="size-6 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-transparent text-primary checked:bg-primary checked:border-primary focus:ring-0 focus:ring-offset-0 transition-all cursor-pointer" type="checkbox"/>
+</label>
+<label class="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-surface-dark shadow-soft border border-gray-50 dark:border-gray-800 cursor-pointer group transition-all hover:border-primary/30">
+<div class="flex flex-col items-center justify-center size-12 rounded-xl bg-gray-50 dark:bg-gray-800 text-gray-500 font-bold text-xs leading-none shrink-0">
+<span>01</span><span>PM</span>
+</div>
+<div class="flex-1">
+<p class="text-[#0c1c1d] dark:text-white text-base font-semibold leading-tight">Vitamin D</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm mt-0.5">1 Tablet</p>
+</div>
+<input class="size-6 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-transparent text-primary checked:bg-primary checked:border-primary focus:ring-0 focus:ring-offset-0 transition-all cursor-pointer" type="checkbox"/>
+</label>
+</div>
+</div>
+<div class="px-6 mb-8">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-[#0c1c1d] dark:text-white text-lg font-bold leading-tight">Recent Activity</h3>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-surface-dark shadow-soft border border-gray-50 dark:border-gray-800">
+<div class="size-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-500 shrink-0">
+<span class="material-symbols-outlined">hematology</span>
+</div>
+<div class="flex-1">
+<p class="text-[#0c1c1d] dark:text-white text-base font-semibold leading-tight">Blood Test Results</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm mt-0.5">Added Yesterday</p>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-surface-dark shadow-soft border border-gray-50 dark:border-gray-800">
+<div class="size-12 rounded-xl bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-purple-500 shrink-0">
+<span class="material-symbols-outlined">vaccines</span>
+</div>
+<div class="flex-1">
+<p class="text-[#0c1c1d] dark:text-white text-base font-semibold leading-tight">Vaccination Record</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm mt-0.5">Added 3 days ago</p>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</div>
+</div>
+</div>
+</main>
+<button class="absolute bottom-28 right-6 z-30 size-14 flex items-center justify-center bg-primary text-white rounded-2xl shadow-lg shadow-primary/30 hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 focus:outline-none">
+<span class="material-symbols-outlined text-3xl">smart_toy</span>
+</button>
+<nav class="absolute bottom-0 w-full bg-white dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800 pb-safe pt-2 z-20 shadow-nav">
+<div class="flex items-center justify-between h-16 px-6 relative">
+<button class="flex flex-col items-center gap-1 w-12 text-primary group">
+<span class="material-symbols-outlined filled text-2xl group-hover:scale-110 transition-transform">home</span>
+<span class="text-[10px] font-semibold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 w-12 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors group">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">medication</span>
+<span class="text-[10px] font-semibold">Meds</span>
+</button>
+<div class="relative -top-6">
+<button class="size-16 flex flex-col items-center justify-center bg-primary text-white rounded-full shadow-lg shadow-primary/40 ring-4 ring-white dark:ring-surface-dark hover:scale-105 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-3xl">document_scanner</span>
+</button>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-bold text-primary whitespace-nowrap">Scan Rx</span>
+</div>
+<button class="flex flex-col items-center gap-1 w-12 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors group">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">folder</span>
+<span class="text-[10px] font-semibold">Records</span>
+</button>
+<button class="flex flex-col items-center gap-1 w-12 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors group">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">person</span>
+<span class="text-[10px] font-semibold">Profile</span>
+</button>
+</div>
+<div class="h-4 w-full"></div>
+</nav>
+</div>
+
+<script>
+(function() {
+    function navigate(screen) {
+        window.top.postMessage({ type: 'NAVIGATE', screen: screen }, '*');
+    }
+
+    document.body.addEventListener('click', function(e) {
+        var target = e.target.closest('button, a, label');
+        if (!target) return;
+
+        var text = target.textContent.toLowerCase();
+        var icon = target.querySelector('.material-symbols-outlined');
+        var iconName = icon ? icon.textContent.trim() : '';
+
+        // Drawer menu items
+        if (iconName === 'settings' || text.includes('settings')) {
+            e.preventDefault();
+            navigate('side_navigation_drawer_2');
+            return;
+        }
+        
+        // FAB - AI Chat
+        if (iconName === 'smart_toy') {
+            e.preventDefault();
+            navigate('cureta_health_assistant_chat');
+            return;
+        }
+        
+        // Bottom nav - Scan Rx
+        if (iconName === 'document_scanner') {
+            e.preventDefault();
+            navigate('scan_prescription_1');
+            return;
+        }
+        
+        // Bottom nav - Profile
+        if (iconName === 'person' || text.includes('profile')) {
+            e.preventDefault();
+            navigate('home_screen_-_healthcare_app_1');
+            return;
+        }
+        
+        // Bottom nav - Records
+        if (iconName === 'folder' || text.includes('records')) {
+            e.preventDefault();
+            navigate('my_medical_records');
+            return;
+        }
+        
+        // Bottom nav - Meds
+        if (iconName === 'medication' || text.includes('meds')) {
+            e.preventDefault();
+            navigate('medicine_alert');
+            return;
+        }
+
+    }, true);
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add Medicine - Step 1</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00a0a8",
+                        "primary-dark": "#008a91",
+                        "background-light": "#f8fcfc",
+                        "background-dark": "#0f2223",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a3032",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem", 
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "soft": "0 4px 20px -2px rgba(0, 0, 0, 0.05)",
+                        "glow": "0 4px 20px -2px rgba(0, 160, 168, 0.3)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-50 font-display antialiased selection:bg-primary/30 selection:text-primary transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-2xl shadow-slate-200/50 dark:shadow-none">
+<!-- Header -->
+<header class="flex items-center justify-between p-4 pt-6 pb-2 z-10">
+<button aria-label="Close" class="flex items-center justify-center p-2 rounded-full text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-[28px]">close</span>
+</button>
+<h2 class="text-base font-semibold tracking-tight text-slate-800 dark:text-slate-200 opacity-90">Add Medicine</h2>
+<div class="w-10"></div> <!-- Spacer for visual balance -->
+</header>
+<!-- Progress Indicator -->
+<div class="px-6 py-2">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold uppercase tracking-wider text-primary">Step 1 of 5</span>
+<span class="text-xs font-medium text-slate-400 dark:text-slate-500">20%</span>
+</div>
+<div class="h-2 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full w-1/5 bg-primary rounded-full transition-all duration-500 ease-out"></div>
+</div>
+</div>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col px-6 pt-8">
+<!-- Headline -->
+<div class="mb-10 animate-fade-in-up">
+<h1 class="text-[32px] leading-tight font-bold text-slate-900 dark:text-white mb-3">
+                    What medicine are you taking?
+                </h1>
+<p class="text-slate-500 dark:text-slate-400 text-lg font-normal">
+                    Let's find your medication.
+                </p>
+</div>
+<!-- Input Field Area -->
+<div class="relative w-full group">
+<label class="sr-only" for="medicine-name">Medicine Name</label>
+<div class="relative flex items-center">
+<input autofocus="" class="peer w-full h-16 pl-5 pr-14 bg-white dark:bg-surface-dark border-2 border-slate-200 dark:border-slate-700 rounded-2xl text-lg text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-primary focus:ring-0 transition-all shadow-soft" id="medicine-name" name="medicine-name" placeholder="e.g. Aspirin" type="text"/>
+<!-- Scan Button/Icon inside input -->
+<button aria-label="Scan medicine bottle" class="absolute right-3 p-2 text-primary hover:text-primary-dark hover:bg-primary/5 rounded-xl transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">photo_camera</span>
+</button>
+</div>
+<!-- Helper Text -->
+<div class="mt-4 flex items-start gap-2 px-1">
+<span class="material-symbols-outlined text-slate-400 text-[18px] mt-0.5">info</span>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400 leading-relaxed">
+                        You can type the medicine name or scan the bottle using the camera icon.
+                    </p>
+</div>
+</div>
+<!-- Recent Suggestions (Optional/Contextual Filler) -->
+<div class="mt-12 hidden md:block">
+<p class="text-xs font-bold text-slate-400 dark:text-slate-600 uppercase tracking-wider mb-4 px-1">Common Medicines</p>
+<div class="flex flex-wrap gap-3">
+<button class="px-4 py-2 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium hover:border-primary hover:text-primary transition-all">Vitamin D</button>
+<button class="px-4 py-2 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium hover:border-primary hover:text-primary transition-all">Ibuprofen</button>
+<button class="px-4 py-2 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium hover:border-primary hover:text-primary transition-all">Amoxicillin</button>
+</div>
+</div>
+</main>
+<!-- Bottom Action -->
+<div class="p-6 pb-8 bg-gradient-to-t from-background-light via-background-light to-transparent dark:from-background-dark dark:via-background-dark">
+<button class="w-full h-14 bg-primary hover:bg-primary-dark text-white font-bold text-lg rounded-2xl shadow-glow transform transition-all duration-200 active:scale-[0.98] flex items-center justify-center gap-2 group">
+                Next
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Optional subtle background pattern for larger screens to frame the mobile view -->
+<div class="fixed inset-0 -z-10 hidden md:block bg-slate-50 dark:bg-slate-900 pointer-events-none">
+<div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" style="background-image: radial-gradient(#00a0a8 1px, transparent 1px); background-size: 24px 24px;"></div>
+</div>
+</body></html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Switch Profiles</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00a0a8",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#162e30",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "Noto Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-background-dark dark:text-background-light font-display antialiased min-h-screen flex flex-col transition-colors duration-200">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm px-4 py-3 flex items-center justify-between border-b border-transparent">
+<button aria-label="Close" class="flex items-center justify-center p-2 -ml-2 rounded-full hover:bg-gray-100 dark:hover:bg-surface-dark transition-colors text-background-dark dark:text-background-light">
+<span class="material-symbols-outlined text-[28px]">close</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight text-center flex-1 text-background-dark dark:text-white">
+            Switch Profile
+        </h1>
+<button class="flex items-center justify-end font-bold text-primary hover:text-primary/80 transition-colors text-base px-2 -mr-2">
+            Done
+        </button>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col w-full max-w-md mx-auto px-4 pb-8">
+<!-- Meta Text: Current Status -->
+<div class="mt-4 mb-2 flex justify-center">
+<div class="inline-flex items-center gap-2 bg-primary/10 dark:bg-primary/20 px-4 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<p class="text-primary text-sm font-medium leading-normal">Currently viewing: John Doe</p>
+</div>
+</div>
+<!-- Headline -->
+<div class="mt-4 mb-6">
+<h2 class="text-2xl font-bold tracking-tight text-background-dark dark:text-white">
+                Who is this for?
+            </h2>
+<p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Select a profile to manage their health records.</p>
+</div>
+<!-- Radio List / Profile Cards -->
+<div class="flex flex-col gap-3" role="radiogroup">
+<!-- Item 1: Active User (Self) -->
+<label class="group relative flex items-center gap-4 rounded-2xl border-2 border-primary bg-surface-light dark:bg-surface-dark p-4 cursor-pointer shadow-sm transition-all hover:shadow-md">
+<input checked="" class="peer sr-only" name="profile_selector" type="radio" value="john"/>
+<!-- Avatar -->
+<div class="relative h-14 w-14 shrink-0 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 dark:bg-blue-900/30 dark:text-blue-300">
+<!-- Using text for avatar placeholder -->
+<span class="text-lg font-bold">JD</span>
+<!-- Online/Active dot -->
+<div class="absolute bottom-0 right-0 h-4 w-4 rounded-full bg-green-500 border-2 border-white dark:border-surface-dark"></div>
+</div>
+<!-- Text Info -->
+<div class="flex flex-col grow">
+<p class="text-base font-bold text-background-dark dark:text-white">John Doe</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 font-medium">Self</p>
+</div>
+<!-- Selection Indicator -->
+<div class="h-6 w-6 rounded-full border-2 border-primary bg-primary flex items-center justify-center transition-all opacity-100 scale-100">
+<span class="material-symbols-outlined text-white text-[16px] font-bold">check</span>
+</div>
+</label>
+<!-- Item 2: Child -->
+<label class="group relative flex items-center gap-4 rounded-2xl border-2 border-transparent bg-surface-light dark:bg-surface-dark p-4 cursor-pointer shadow-sm transition-all hover:bg-gray-50 dark:hover:bg-surface-dark/80 ring-1 ring-black/5 dark:ring-white/10">
+<input class="peer sr-only" name="profile_selector" type="radio" value="sarah"/>
+<!-- Avatar -->
+<div class="h-14 w-14 shrink-0 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 dark:bg-pink-900/30 dark:text-pink-300">
+<span class="text-lg font-bold">SD</span>
+</div>
+<!-- Text Info -->
+<div class="flex flex-col grow">
+<p class="text-base font-bold text-background-dark dark:text-white group-hover:text-primary transition-colors">Sarah Doe</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 font-medium">Child</p>
+</div>
+<!-- Selection Indicator (Hidden when unchecked, normally handled by CSS peer logic, but simulating unselected state here) -->
+<div class="h-6 w-6 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-transparent group-hover:border-primary transition-colors"></div>
+<!-- Active State Styles Logic via Peer (Simulated for this static view by forcing the checked state on the first item only) -->
+<!-- In a real app, the conditional class logic below would apply based on checked state -->
+</label>
+<!-- Item 3: Parent -->
+<label class="group relative flex items-center gap-4 rounded-2xl border-2 border-transparent bg-surface-light dark:bg-surface-dark p-4 cursor-pointer shadow-sm transition-all hover:bg-gray-50 dark:hover:bg-surface-dark/80 ring-1 ring-black/5 dark:ring-white/10">
+<input class="peer sr-only" name="profile_selector" type="radio" value="joe"/>
+<!-- Avatar -->
+<div class="h-14 w-14 shrink-0 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
+<span class="text-lg font-bold">GJ</span>
+</div>
+<!-- Text Info -->
+<div class="flex flex-col grow">
+<p class="text-base font-bold text-background-dark dark:text-white group-hover:text-primary transition-colors">Grandpa Joe</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 font-medium">Parent</p>
+</div>
+<!-- Selection Indicator -->
+<div class="h-6 w-6 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-transparent group-hover:border-primary transition-colors"></div>
+</label>
+</div>
+<!-- Add Button -->
+<div class="mt-8 flex justify-center">
+<button class="w-full flex items-center justify-center gap-3 rounded-xl bg-primary/10 hover:bg-primary/15 dark:bg-primary/20 dark:hover:bg-primary/25 text-primary dark:text-primary-300 font-bold h-14 px-6 transition-all active:scale-[0.98]">
+<div class="flex items-center justify-center rounded-full bg-primary/20 dark:bg-primary/30 w-8 h-8">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</div>
+<span>Add another person</span>
+</button>
+</div>
+</main>
+<!-- Bottom padding for safe area on mobile -->
+<div class="h-6"></div>
+</body></html>

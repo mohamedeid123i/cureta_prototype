@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manage Health Profiles</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00A1A9",
+                        "background-light": "#FFFFFF",
+                        "background-dark": "#0f2223",
+                        "surface-light": "#F8F9FA",
+                        "surface-dark": "#1a2c2d",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"],
+                        "body": ["Lexend", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'nav': '0 -4px 20px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0c1c1d] dark:text-white transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-2xl">
+<header class="flex items-center justify-between px-6 pt-12 pb-4 bg-background-light dark:bg-background-dark sticky top-0 z-20">
+<div class="flex items-center gap-4">
+<button class="p-2 -ml-2 rounded-full hover:bg-gray-100 dark:hover:bg-surface-dark text-[#0c1c1d] dark:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Manage Profiles</h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="size-10 flex items-center justify-center rounded-full bg-surface-light dark:bg-surface-dark text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto pb-32">
+<div class="px-6 py-4">
+<h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">Primary Profile</h3>
+<div class="relative overflow-hidden bg-white dark:bg-surface-dark rounded-2xl p-6 shadow-soft border border-gray-50 dark:border-gray-800">
+<div class="flex items-center gap-4 relative z-10">
+<div class="size-20 rounded-full border-4 border-primary/20 p-1">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover rounded-full" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwsP9b7YH4tZxF8TFAgdgFzBIlopdF2OZg3qbIvG0f-1D8yxocYMBfZ5PonNw9dtW8IDJ-6dbjws7MK9PPKBPqVzH5Zf86CJG5yXRgLyPrzrNtgLDJmnur4BGycvtWFclktWpPdocoDI_t1eBIaGQIOsuswHXlfyjlq9JJ9ic8dpmtLwu32YDZS3Zrj0saYx4RQzpHBNkf6__p9UxBGzZShyD2hblIDSZVQgzBoTB5FQ_IGZpQ7M_RBV1obp4-msNtx8Gajoo4NFxO");'></div>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<h2 class="text-xl font-bold leading-tight">Sarah</h2>
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-tight">Self</span>
+</div>
+<div class="flex items-center gap-4 mt-2">
+<div class="flex flex-col">
+<span class="text-[10px] text-gray-400 font-medium uppercase tracking-wide leading-none mb-1">Age</span>
+<span class="text-sm font-semibold">28 Years</span>
+</div>
+<div class="h-6 w-[1px] bg-gray-100 dark:bg-gray-800"></div>
+<div class="flex flex-col">
+<span class="text-[10px] text-gray-400 font-medium uppercase tracking-wide leading-none mb-1">Blood Type</span>
+<span class="text-sm font-semibold">O+ (Positive)</span>
+</div>
+</div>
+</div>
+<button class="size-10 flex items-center justify-center rounded-full bg-gray-50 dark:bg-gray-800 text-primary">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+</div>
+</div>
+</div>
+<div class="px-6 py-4">
+<h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">Family Profiles</h3>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex flex-col items-center p-5 bg-white dark:bg-surface-dark rounded-2xl shadow-soft border border-gray-50 dark:border-gray-800 active:scale-95 transition-transform duration-200">
+<div class="size-16 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-3xl text-blue-500">face_5</span>
+</div>
+<span class="text-sm font-bold">Leo</span>
+<span class="text-[11px] text-gray-500 dark:text-gray-400 font-medium">Son, 6 yrs</span>
+</button>
+<button class="flex flex-col items-center p-5 bg-white dark:bg-surface-dark rounded-2xl shadow-soft border border-gray-50 dark:border-gray-800 active:scale-95 transition-transform duration-200">
+<div class="size-16 rounded-full bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-3xl text-purple-500">face_2</span>
+</div>
+<span class="text-sm font-bold">Martha</span>
+<span class="text-[11px] text-gray-500 dark:text-gray-400 font-medium">Mother, 56 yrs</span>
+</button>
+<button class="flex flex-col items-center p-5 bg-white dark:bg-surface-dark rounded-2xl shadow-soft border border-gray-50 dark:border-gray-800 active:scale-95 transition-transform duration-200">
+<div class="size-16 rounded-full bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-3xl text-orange-500">face_4</span>
+</div>
+<span class="text-sm font-bold">Emily</span>
+<span class="text-[11px] text-gray-500 dark:text-gray-400 font-medium">Daughter, 4 yrs</span>
+</button>
+<button class="flex flex-col items-center justify-center p-5 bg-primary/5 border-2 border-dashed border-primary/30 rounded-2xl active:scale-95 transition-transform duration-200">
+<div class="size-16 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-3xl text-primary font-bold">add</span>
+</div>
+<span class="text-sm font-bold text-primary">Add Member</span>
+</button>
+</div>
+</div>
+<div class="px-6 py-4">
+<div class="bg-primary/5 rounded-2xl p-4 flex gap-3">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Switching profiles allows you to view specific health records, medication schedules, and medical history for that family member.
+                </p>
+</div>
+</div>
+</main>
+<button class="absolute bottom-28 right-6 z-30 size-14 flex items-center justify-center bg-primary text-white rounded-2xl shadow-lg shadow-primary/30 hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 focus:outline-none">
+<span class="material-symbols-outlined text-3xl">smart_toy</span>
+</button>
+<nav class="absolute bottom-0 w-full bg-white dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800 pb-safe pt-2 z-20 shadow-nav">
+<div class="flex items-center justify-between h-16 px-6 relative">
+<button class="flex flex-col items-center gap-1 w-12 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors group">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">home</span>
+<span class="text-[10px] font-semibold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 w-12 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors group">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">medication</span>
+<span class="text-[10px] font-semibold">Meds</span>
+</button>
+<div class="relative -top-6">
+<button class="size-16 flex flex-col items-center justify-center bg-primary text-white rounded-full shadow-lg shadow-primary/40 ring-4 ring-white dark:ring-surface-dark hover:scale-105 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-3xl">document_scanner</span>
+</button>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-bold text-primary whitespace-nowrap">Scan Rx</span>
+</div>
+<button class="flex flex-col items-center gap-1 w-12 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors group">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">folder</span>
+<span class="text-[10px] font-semibold">Records</span>
+</button>
+<button class="flex flex-col items-center gap-1 w-12 text-primary group">
+<span class="material-symbols-outlined filled text-2xl group-hover:scale-110 transition-transform">person</span>
+<span class="text-[10px] font-semibold">Profile</span>
+</button>
+</div>
+<div class="h-4 w-full"></div>
+</nav>
+</div>
+
+</body></html>

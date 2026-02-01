@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Basic Health Info</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00a0a8",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#162e2f",
+                        "text-main-light": "#0c1c1d",
+                        "text-main-dark": "#e0e6e6",
+                        "text-sub-light": "#459ca1",
+                        "text-sub-dark": "#7fbcc0"
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main-light dark:text-text-main-dark transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden">
+<div class="flex items-center px-4 py-3 justify-between sticky top-0 z-10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50">
+<button class="text-text-main-light dark:text-text-main-dark flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Basic Health Info</h2>
+<button class="text-text-main-light dark:text-text-main-dark flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col px-4 py-6 gap-6 w-full max-w-md mx-auto">
+<div class="w-full bg-surface-light dark:bg-surface-dark rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.2)] border border-gray-100 dark:border-gray-800 transition-colors">
+<div class="flex items-center gap-4 mb-6">
+<div class="size-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[32px]">person</span>
+</div>
+<div>
+<h3 class="text-2xl font-bold leading-tight">Sarah Jenkins</h3>
+<p class="text-text-sub-light dark:text-text-sub-dark text-sm font-medium mt-1">Scanned: Just now</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1 p-4 bg-background-light dark:bg-background-dark rounded-xl border border-transparent dark:border-gray-800">
+<span class="text-xs font-bold text-text-sub-light dark:text-text-sub-dark uppercase tracking-wider">Age</span>
+<span class="text-xl font-bold text-text-main-light dark:text-text-main-dark">34 Years</span>
+</div>
+<div class="flex flex-col gap-1 p-4 bg-background-light dark:bg-background-dark rounded-xl border border-transparent dark:border-gray-800">
+<span class="text-xs font-bold text-text-sub-light dark:text-text-sub-dark uppercase tracking-wider">Blood Type</span>
+<span class="text-xl font-bold text-primary">A+</span>
+</div>
+</div>
+</div>
+<div class="w-full flex-1">
+<h3 class="text-lg font-bold mb-3 px-1 flex items-center gap-2">
+    Chronic Diseases
+    <span class="flex items-center justify-center bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-[10px] font-bold px-2 py-0.5 rounded-full">3</span>
+</h3>
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.2)] border border-gray-100 dark:border-gray-800 transition-colors">
+<div class="flex items-center justify-between p-4 border-b border-gray-50 dark:border-gray-700/50 last:border-0 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[20px]">pulmonology</span>
+</div>
+<span class="font-semibold text-base">Asthma</span>
+</div>
+<span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-600 dark:bg-orange-900/20 dark:text-orange-400 border border-orange-100 dark:border-orange-800/30">Moderate</span>
+</div>
+<div class="flex items-center justify-between p-4 border-b border-gray-50 dark:border-gray-700/50 last:border-0 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[20px]">water_drop</span>
+</div>
+<span class="font-semibold text-base">Type 2 Diabetes</span>
+</div>
+<span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400 border border-blue-100 dark:border-blue-800/30">Managed</span>
+</div>
+<div class="flex items-center justify-between p-4 border-b border-gray-50 dark:border-gray-700/50 last:border-0 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[20px]">allergies</span>
+</div>
+<span class="font-semibold text-base">Peanut Allergy</span>
+</div>
+<span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 border border-red-100 dark:border-red-800/30">Severe</span>
+</div>
+</div>
+</div>
+</div>
+<div class="h-6 w-full"></div>
+</div>
+</body></html>

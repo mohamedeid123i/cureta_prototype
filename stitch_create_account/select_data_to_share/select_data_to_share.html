@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Select Data to Share</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00a0a8",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                        "text-main": "#0c1c1d",
+                        "text-dark": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-main dark:text-text-dark antialiased transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm p-4 pb-2 transition-colors duration-200">
+<button class="flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-text-main dark:text-text-dark">
+<span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span>
+</button>
+<h2 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] pr-12 text-text-main dark:text-text-dark">Select Data to Share</h2>
+</header>
+<!-- Main Content -->
+<main class="flex-1 px-4 py-2 pb-24">
+<!-- HeadlineText -->
+<div class="pb-6 pt-2">
+<h1 class="text-[32px] font-bold leading-tight tracking-tight text-center text-text-main dark:text-text-dark">
+                    Choose what to include
+                </h1>
+<p class="mt-2 text-center text-sm font-medium text-gray-500 dark:text-gray-400">
+                    Control your privacy by selecting a profile
+                </p>
+</div>
+<!-- Selection Cards Container -->
+<div class="flex flex-col gap-5">
+<!-- Card 1: Basic Info (Unselected State) -->
+<!-- Note: Using opacity on border to show unselected state -->
+<div class="group relative cursor-pointer overflow-hidden rounded-xl border-2 border-transparent bg-white dark:bg-gray-800 shadow-md transition-all duration-300 hover:scale-[1.01] hover:shadow-lg">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0 bg-cover bg-center opacity-90 transition-opacity" data-alt="Abstract soft blue gradient shapes" style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.3) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCu25Rm_qOyhRaPPokL_MAC5xfpYUwL2U2pyxDo4jiYXSaQ3pyPUaCLVAfBw3wL9f9eOEHg-JJtdHwOoRdaXao49XGDPLPiW6Atpundv9vKbYSyYdlk05PzHNIcTveetlxCb-isygk3Of0TIRj3d32no1DmFeoqzrjfdEtWWg-AsL8n5BQDNqS2Rk9ZijBq4XArqYU9kk6uIHMy5q38DxgmLzIkpvJG4FM2k40yiVrzrUasTS5fdAosaWJOIiBQxhOdNhwECk5Ty5bl");'>
+</div>
+<div class="relative z-10 flex flex-col p-5 pt-[100px]">
+<!-- Radio Indicator (Top Right) -->
+<div class="absolute right-5 top-5 flex size-8 items-center justify-center rounded-full bg-white/20 backdrop-blur-md">
+<span class="material-symbols-outlined text-white text-[24px]">radio_button_unchecked</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">badge</span>
+<p class="text-sm font-bold uppercase tracking-wider text-primary">Limited Access</p>
+</div>
+<h3 class="text-2xl font-bold leading-tight text-white tracking-tight">Basic info only</h3>
+<p class="text-base font-medium leading-normal text-gray-200">Name, Age, Blood Type, Known Allergies</p>
+<div class="mt-3 w-fit rounded-lg bg-white/20 px-3 py-1.5 backdrop-blur-sm">
+<p class="text-xs font-semibold text-white">Quick identification only</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Full Medical Data (Selected State) -->
+<!-- Active State: Primary Ring Border -->
+<div class="group relative cursor-pointer overflow-hidden rounded-xl border-2 border-primary ring-2 ring-primary/20 bg-white dark:bg-gray-800 shadow-[0_4px_20px_rgba(0,160,168,0.25)] transition-all duration-300 transform scale-[1.01]">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0 bg-cover bg-center" data-alt="Abstract medical data visualization background" style='background-image: linear-gradient(0deg, rgba(0, 90, 95, 0.8) 0%, rgba(0, 40, 45, 0.5) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBTLqXgLiCoJf4o-z27NKVMfQGIYMrCKGGTadKJBGtZp2woC0-MN8BZsbxpCw42VzY5XFdp49vx3ku9htWCc4pHL5jo798B07rONEwi4UH3HaPXvLlo8XCfQwE4LCUaJK5ZKz9dVdFVA8Qj6-TGcGw8r7WubtZOJTdfv7Ld0sXT2oz1aMNO-m7P0iDchCmQouNuemLPqLVBOdNCn1ubiDyvvax6Mdr0e-8T-QRA9ymJuqvEYQCLjXPR0BXFrLH0CfodbkU5BfMF_akO");'>
+</div>
+<div class="relative z-10 flex flex-col p-5 pt-[100px]">
+<!-- Radio Indicator (Top Right) -->
+<div class="absolute right-5 top-5 flex size-8 items-center justify-center rounded-full bg-white text-primary shadow-sm">
+<span class="material-symbols-outlined text-[24px]">check_circle</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">medical_services</span>
+<p class="text-sm font-bold uppercase tracking-wider text-primary">Full Access</p>
+</div>
+<h3 class="text-2xl font-bold leading-tight text-white tracking-tight">Full medical data</h3>
+<p class="text-base font-medium leading-normal text-gray-100">All diseases, current medications, lab results, attachments</p>
+<div class="mt-3 w-fit rounded-lg bg-primary/90 px-3 py-1.5 shadow-sm">
+<p class="text-xs font-semibold text-white">Ideal for doctor visits</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Footer Button -->
+<div class="fixed bottom-0 left-0 w-full bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md p-4 pb-8 border-t border-gray-200 dark:border-gray-800 z-40">
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 bg-primary hover:bg-primary/90 transition-colors text-white text-lg font-bold leading-normal tracking-wide shadow-lg shadow-primary/30">
+<span class="mr-2">Generate QR Code</span>
+<span class="material-symbols-outlined text-[20px]">qr_code_2</span>
+</button>
+</div>
+</div>
+</body></html>

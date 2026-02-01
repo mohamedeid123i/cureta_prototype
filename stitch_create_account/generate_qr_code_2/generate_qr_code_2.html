@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Access Health Data</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00A1A9",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#162e2f",
+                        "text-main-light": "#0c1c1d",
+                        "text-main-dark": "#e0e6e6",
+                        "text-sub-light": "#459ca1",
+                        "text-sub-dark": "#7fbcc0"
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main-light dark:text-text-main-dark transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden">
+<div class="flex items-center p-4 pb-2 justify-between sticky top-0 z-10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md">
+<button class="text-text-main-light dark:text-text-main-dark flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Access Health Data</h2>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center px-4 py-6 gap-6 w-full max-w-md mx-auto">
+<div class="text-center space-y-3">
+<div class="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary text-[32px]">check_circle</span>
+</div>
+<h2 class="text-[24px] md:text-[28px] font-bold leading-tight tracking-tight px-4">
+                Access Confirmation
+            </h2>
+<p class="text-text-sub-light dark:text-text-sub-dark text-lg font-normal">
+                Health data from <span class="font-bold text-text-main-light dark:text-text-main-dark">Sarah Jenkins</span> is ready to view
+            </p>
+</div>
+<div class="w-full">
+<div class="flex flex-col items-center justify-center rounded-2xl p-6 bg-surface-light dark:bg-surface-dark shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.2)] border border-gray-100 dark:border-gray-800 transition-colors">
+<div class="w-full flex items-center gap-4 mb-6">
+<div class="size-14 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-gray-500 dark:text-gray-300 text-[28px]">person</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-lg font-bold truncate">Sarah Jenkins</h3>
+<p class="text-sm text-text-sub-light dark:text-text-sub-dark">ID: #942-881</p>
+</div>
+<div class="px-2 py-1 rounded bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-bold uppercase tracking-wide">
+                        Verified
+                    </div>
+</div>
+<div class="w-full space-y-3">
+<div class="w-full p-3 rounded-xl bg-background-light dark:bg-background-dark/50 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">description</span>
+<span class="text-sm font-medium">Medical History Summary</span>
+</div>
+<div class="w-full p-3 rounded-xl bg-background-light dark:bg-background-dark/50 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">vaccines</span>
+<span class="text-sm font-medium">Immunization Records</span>
+</div>
+<div class="w-full p-3 rounded-xl bg-background-light dark:bg-background-dark/50 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">lab_profile</span>
+<span class="text-sm font-medium">Recent Lab Results</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-6 pt-4 border-t border-gray-100 dark:border-gray-700 w-full justify-center">
+<span class="material-symbols-outlined text-text-sub-light dark:text-text-sub-dark text-[18px]">lock</span>
+<p class="text-text-sub-light dark:text-text-sub-dark text-xs font-medium">Secure End-to-End Encryption</p>
+</div>
+</div>
+</div>
+<div class="w-full flex flex-col gap-3 mt-2">
+<button class="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-xl h-14 px-4 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 transition-all active:scale-[0.98]">
+<span class="text-lg font-bold leading-normal tracking-[0.015em]">View Data</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<button class="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-xl h-14 px-4 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 text-text-sub-light dark:text-text-sub-dark border-2 border-transparent hover:border-black/5 dark:hover:border-white/5 transition-all active:scale-[0.98]">
+<span class="text-lg font-bold leading-normal tracking-[0.015em]">Cancel</span>
+</button>
+</div>
+</div>
+<div class="h-6 w-full"></div>
+</div>
+
+</body></html>

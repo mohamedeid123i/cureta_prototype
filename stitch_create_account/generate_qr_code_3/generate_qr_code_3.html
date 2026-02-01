@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Generate QR Code</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00a0a8",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#162e2f",
+                        "text-main-light": "#0c1c1d",
+                        "text-main-dark": "#e0e6e6",
+                        "text-sub-light": "#459ca1",
+                        "text-sub-dark": "#7fbcc0"
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main-light dark:text-text-main-dark transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header -->
+<div class="flex items-center p-4 pb-2 justify-between sticky top-0 z-10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md">
+<button class="text-text-main-light dark:text-text-main-dark flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Share Data</h2>
+</div>
+<!-- Main Content -->
+<div class="flex-1 flex flex-col items-center justify-center px-4 py-6 gap-6 w-full max-w-md mx-auto">
+<!-- Headline -->
+<div class="text-center space-y-2">
+<h2 class="text-[24px] md:text-[28px] font-bold leading-tight tracking-tight px-4">
+                    Share this QR with doctors or family
+                </h2>
+<p class="text-text-sub-light dark:text-text-sub-dark text-base font-normal">
+                    Securely share your health profile instantly
+                </p>
+</div>
+<!-- QR Code Card -->
+<div class="w-full">
+<div class="flex flex-col items-center justify-center rounded-xl p-8 bg-surface-light dark:bg-surface-dark shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.2)] border border-gray-100 dark:border-gray-800 transition-colors">
+<!-- QR Wrapper with white bg for scannability in dark mode -->
+<div class="bg-white p-4 rounded-lg shadow-sm mb-6">
+<div class="aspect-square w-48 h-48 bg-contain bg-center bg-no-repeat" data-alt="Black and white QR code pattern for scanning health data" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC3_mT3IvOzEOR6_Jus833FRJ1Mjo1O6es7UN-4aJcMEl9j0_Ym3gUvix86FOfJ2tig3epBCg-ZU530VR5-Rh_TfUR80zDCZRSGgacH1MfkrO87oBmE3oHShK9QZqtUk3286ulQPYFBONdwMVcsdekcmjjAdqNV398Xdeuhxif9gG8UgFCmv4g2yCdrLgxM2UiGRuKNvX7rDUAPCESIC8pgbsfmoVh0fEH1-K30I1XQfyIFxYMMNwxHC9uOF3gWY6HoW1jYTMC1LmMR');"></div>
+</div>
+<div class="flex flex-col items-center gap-2 w-full">
+<p class="text-lg font-bold leading-tight tracking-[-0.015em]">Scan to view health profile</p>
+<div class="flex items-center gap-2 bg-primary/10 dark:bg-primary/20 px-3 py-1.5 rounded-full mt-1">
+<span class="material-symbols-outlined text-primary text-[18px]">timer</span>
+<p class="text-primary text-sm font-medium">Expires in 15 mins</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="w-full flex flex-col gap-4 mt-2">
+<div class="flex gap-3 w-full">
+<button class="flex flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-xl h-12 px-4 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span class="text-base font-bold leading-normal tracking-[0.015em]">Save QR</span>
+</button>
+<button class="flex flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-xl h-12 px-4 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px]">ios_share</span>
+<span class="text-base font-bold leading-normal tracking-[0.015em]">Share QR</span>
+</button>
+</div>
+<!-- Secondary Action -->
+<button class="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-xl h-12 px-4 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 text-text-main-light dark:text-text-main-dark transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+<span class="text-sm font-bold leading-normal tracking-[0.015em]">Edit data selection</span>
+</button>
+</div>
+</div>
+<!-- Spacer for bottom safe area -->
+<div class="h-6 w-full"></div>
+</div>
+</body></html>

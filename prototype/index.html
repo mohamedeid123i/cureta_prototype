@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cureta Health App - Phase 1 & 2 Prototype</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Lexend', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .phone-frame {
+            width: 393px;
+            height: 852px;
+            background: #1a1a1a;
+            border-radius: 40px;
+            padding: 10px;
+            box-shadow: 0 0 0 2px #333, 0 0 0 4px #1a1a1a, 0 50px 100px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #f5f8f8;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+        #screenFrame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 32px;
+        }
+        .screen-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,161,169,0.95);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 13px;
+            z-index: 10000;
+            box-shadow: 0 4px 15px rgba(0,161,169,0.3);
+            max-width: 90%;
+            text-align: center;
+        }
+        .toast {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            z-index: 10001;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f5f8f8;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            border-radius: 28px;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #e0e0e0;
+            border-top-color: #00a0a8;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text {
+            margin-top: 15px;
+            color: #00a0a8;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-frame">
+        <div class="phone-screen">
+            <div id="loadingOverlay" class="loading-overlay hidden">
+                <div class="spinner"></div>
+                <div class="loading-text">Loading...</div>
+            </div>
+            <iframe id="screenFrame" src=""></iframe>
+        </div>
+    </div>
+    <div id="screenIndicator" class="screen-indicator">Cureta Health App</div>
+    <div id="toast" class="toast"></div>
+
+    <script>
+        const AppState = {
+            currentScreen: 'welcome_to_healthapp',
+            history: []
+        };
+
+        // Phase 1 Screen Flow
+        const ScreenFlows = {
+            // ===== ONBOARDING FLOW =====
+            'welcome_to_healthapp': { 
+                triggers: ['get started', 'start'],
+                target: 'secure_medical_records',
+                alternatives: { 'login': 'welcome_back' }
+            },
+            'secure_medical_records': { 
+                triggers: ['next'],
+                target: 'timely_medicine_alerts',
+                skip: 'welcome_back'
+            },
+            'timely_medicine_alerts': { 
+                triggers: ['next'],
+                target: 'secure_qr_sharing',
+                skip: 'welcome_back'
+            },
+            'secure_qr_sharing': { 
+                triggers: ['next'],
+                target: 'manage_family_profiles_3',
+                skip: 'welcome_back'
+            },
+            'manage_family_profiles_3': { 
+                triggers: ['next'],
+                target: 'manage_family_profiles_1',
+                skip: 'welcome_back'
+            },
+            'manage_family_profiles_1': { 
+                triggers: ['next'],
+                target: 'manage_family_profiles_2',
+                skip: 'welcome_back'
+            },
+            'manage_family_profiles_2': { 
+                triggers: ['create account', 'get started', 'next'],
+                target: 'welcome_back',
+                skip: 'welcome_back'
+            },
+            
+            // ===== AUTHENTICATION FLOW =====
+            'welcome_back': { 
+                triggers: ['login', 'sign in'],
+                target: 'home_screen_-_healthcare_app_2',
+                alternatives: { 
+                    'forgot': 'reset_password', 
+                    'create': 'create_an_account',
+                    'sign up': 'create_an_account'
+                }
+            },
+            'create_an_account': { 
+                triggers: ['sign up', 'create'],
+                target: 'welcome_back',
+                alternatives: { 'login': 'welcome_back' }
+            },
+            'reset_password': { 
+                triggers: ['send', 'continue'],
+                target: 'enter_verification_code',
+                alternatives: { 'back to login': 'welcome_back' }
+            },
+            'enter_verification_code': { 
+                triggers: ['verify', 'continue'],
+                target: 'set_a_new_password'
+            },
+            'set_a_new_password': { 
+                triggers: ['reset', 'save', 'confirm'],
+                target: 'welcome_back'
+            },
+
+            // ===== PHASE 2: MAIN HOME / DASHBOARD =====
+            'home_screen_-_healthcare_app_2': {
+                triggers: [],
+                target: null,
+                bottomNav: {
+                    'home': 'home_screen_-_healthcare_app_2',
+                    'person': 'home_screen_-_healthcare_app_1',
+                    'document_scanner': 'scan_prescription_1'
+                },
+                icons: {
+                    'menu': 'side_navigation_drawer_1',
+                    'smart_toy': 'cureta_health_assistant_chat'
+                }
+            },
+
+            // ===== PHASE 2: PROFILE HOME =====
+            'home_screen_-_healthcare_app_1': {
+                triggers: [],
+                target: null,
+                bottomNav: {
+                    'home': 'home_screen_-_healthcare_app_2',
+                    'person': 'home_screen_-_healthcare_app_1',
+                    'document_scanner': 'scan_prescription_1'
+                },
+                icons: {
+                    'menu': 'side_navigation_drawer_1',
+                    'smart_toy': 'cureta_health_assistant_chat'
+                }
+            },
+
+            // ===== PHASE 2: AI CHAT =====
+            'cureta_health_assistant_chat': {
+                triggers: [],
+                target: null,
+                icons: {
+                    'close': 'home_screen_-_healthcare_app_2',
+                    'arrow_back': 'home_screen_-_healthcare_app_2'
+                }
+            },
+
+            // ===== PHASE 2: OCR SCAN FLOW =====
+            'scan_prescription_1': {
+                triggers: ['capture', 'take photo'],
+                target: 'scan_prescription_2',
+                icons: {
+                    'arrow_back': 'home_screen_-_healthcare_app_2',
+                    'photo_camera': 'scan_prescription_2'
+                }
+            },
+            'scan_prescription_2': {
+                triggers: ['confirm', 'save'],
+                target: 'home_screen_-_healthcare_app_2',
+                icons: {
+                    'arrow_back': 'scan_prescription_1'
+                }
+            },
+
+            // ===== PHASE 2: NAVIGATION DRAWERS =====
+            'side_navigation_drawer_1': {
+                triggers: [],
+                target: null,
+                menuItems: {
+                    'home': 'home_screen_-_healthcare_app_2',
+                    'description': 'my_medical_records',
+                    'notifications': 'medicine_alert',
+                    'diversity_1': 'manage_family_profiles_2',
+                    'qr_code_2': 'qr_code_menu',
+                    'settings': 'side_navigation_drawer_2',
+                    'help': 'home_screen_-_healthcare_app_2',
+                    'logout': 'welcome_back'
+                },
+                textLinks: {
+                    'settings': 'side_navigation_drawer_2',
+                    'my medical records': 'my_medical_records',
+                    'medicine alerts': 'medicine_alert',
+                    'health profiles': 'manage_family_profiles_2',
+                    'qr code share': 'qr_code_menu',
+                    'help': 'home_screen_-_healthcare_app_2',
+                    'logout': 'welcome_back'
+                },
+                icons: {
+                    'close': 'home_screen_-_healthcare_app_2',
+                    'arrow_back': 'home_screen_-_healthcare_app_2'
+                }
+            },
+            'side_navigation_drawer_2': {
+                triggers: [],
+                target: null,
+                icons: {
+                    'arrow_back': 'home_screen_-_healthcare_app_2',
+                    'arrow_back_ios_new': 'home_screen_-_healthcare_app_2'
+                },
+                bottomNav: {
+                    'home': 'home_screen_-_healthcare_app_2',
+                    'settings': 'side_navigation_drawer_2'
+                }
+            }
+        };
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function showLoading() {
+            document.getElementById('loadingOverlay').classList.remove('hidden');
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingOverlay').classList.add('hidden');
+        }
+
+        function loadScreen(screenName) {
+            if (!screenName) return;
+            
+            const frame = document.getElementById('screenFrame');
+            const indicator = document.getElementById('screenIndicator');
+            
+            // Updated: Use folder_name/folder_name.html pattern
+            const url = `/stitch_create_account/${encodeURIComponent(screenName)}/${encodeURIComponent(screenName)}.html`;
+            
+            frame.onload = function() {
+                AppState.currentScreen = screenName;
+                
+                // Format screen name for display
+                const displayName = screenName.replace(/_/g, ' ').replace(/-/g, ' ');
+                indicator.textContent = displayName;
+                
+                try {
+                    setupFrameInteraction(frame, screenName);
+                } catch(e) {
+                    console.log('Frame setup:', e);
+                }
+            };
+            
+            frame.onerror = function() {
+                hideLoading();
+                indicator.textContent = 'Error: ' + screenName;
+            };
+            
+            frame.src = url;
+        }
+
+        function setupFrameInteraction(frame, screenName) {
+            const doc = frame.contentDocument || frame.contentWindow.document;
+            if (!doc || !doc.body) return;
+
+            const flow = ScreenFlows[screenName] || {};
+            
+            // === CHATBOT SCREEN: Let the chatbot handle its own interactions ===
+            if (screenName === 'cureta_health_assistant_chat') {
+                // Use postMessage to tell chatbot to initialize (cross-origin safe)
+                try {
+                    frame.contentWindow.postMessage({ type: 'INIT_CHATBOT' }, '*');
+                } catch(e) {
+                    console.log('Chatbot postMessage:', e);
+                }
+                // Don't add any click listeners - let chatbot handle everything
+                return;
+            }
+            
+            doc.body.addEventListener('click', function(e) {
+                const target = e.target.closest('button, a, [role="button"], nav span, .fab, [class*="fab"]');
+                if (!target) return;
+
+                e.preventDefault();
+                e.stopPropagation();
+
+                const text = target.textContent.toLowerCase().trim();
+                const iconEl = target.querySelector('.material-symbols-outlined') || 
+                               (target.classList.contains('material-symbols-outlined') ? target : null);
+                const iconText = iconEl ? iconEl.textContent.toLowerCase().trim() : '';
+
+                console.log('Click:', { screenName, text, iconText });
+
+                // === DIRECT CHECK: Settings in drawer ===
+                if (screenName === 'side_navigation_drawer_1') {
+                    if (text.includes('settings') || iconText === 'settings') {
+                        navigateTo('side_navigation_drawer_2');
+                        return;
+                    }
+                    if (text.includes('logout') || iconText === 'logout') {
+                        showToast('Logging out...');
+                        navigateTo('welcome_back');
+                        return;
+                    }
+                    if (text.includes('home') || iconText === 'home') {
+                        navigateTo('home_screen_-_healthcare_app_2');
+                        return;
+                    }
+                    if (text.includes('medical records') || iconText === 'description') {
+                        navigateTo('my_medical_records');
+                        return;
+                    }
+                    if (text.includes('medicine') || iconText === 'notifications') {
+                        navigateTo('medicine_alert');
+                        return;
+                    }
+                    if (text.includes('health profiles') || iconText === 'diversity_1') {
+                        navigateTo('manage_family_profiles_2');
+                        return;
+                    }
+                    if (text.includes('qr code') || iconText === 'qr_code_2') {
+                        navigateTo('qr_code_menu');
+                        return;
+                    }
+                    if (text.includes('help') || iconText === 'help') {
+                        navigateTo('home_screen_-_healthcare_app_2');
+                        return;
+                    }
+                }
+
+                // === DIRECT CHECK: Home Screen embedded drawer ===
+                if (screenName === 'home_screen_-_healthcare_app_2') {
+                    // Settings
+                    if (text.includes('settings') || iconText === 'settings') {
+                        navigateTo('side_navigation_drawer_2');
+                        return;
+                    }
+                    // Chatbot FAB
+                    if (iconText === 'smart_toy') {
+                        navigateTo('cureta_health_assistant_chat');
+                        return;
+                    }
+                    // Bottom nav - Scan
+                    if (iconText === 'document_scanner') {
+                        navigateTo('scan_prescription_1');
+                        return;
+                    }
+                    // Bottom nav - Profile
+                    if (iconText === 'person') {
+                        navigateTo('home_screen_-_healthcare_app_1');
+                        return;
+                    }
+                    // Bottom nav - Records
+                    if (iconText === 'folder') {
+                        navigateTo('my_medical_records');
+                        return;
+                    }
+                    // Bottom nav - Medications
+                    if (iconText === 'medication') {
+                        navigateTo('medicine_alert');
+                        return;
+                    }
+                    // Drawer menu items
+                    if (text.includes('appointments') || iconText === 'calendar_month') {
+                        showToast('Appointments coming soon');
+                        return;
+                    }
+                    if (text.includes('vaccinations') || iconText === 'vaccines') {
+                        showToast('Vaccinations coming soon');
+                        return;
+                    }
+                    if (text.includes('lab results') || iconText === 'lab_profile') {
+                        showToast('Lab Results coming soon');
+                        return;
+                    }
+                    if (text.includes('insurance') || iconText === 'health_and_safety') {
+                        showToast('Insurance coming soon');
+                        return;
+                    }
+                    if (text.includes('help') || iconText === 'help') {
+                        showToast('Help & Support coming soon');
+                        return;
+                    }
+                }
+
+                // === PHASE 2: Handle Bottom Navigation ===
+                if (flow.bottomNav) {
+                    for (const [icon, dest] of Object.entries(flow.bottomNav)) {
+                        if (iconText === icon || text.includes(icon)) {
+                            navigateTo(dest);
+                            return;
+                        }
+                    }
+                }
+
+                // === PHASE 2: Handle Side Drawer Menu Items (check FIRST for drawer screens) ===
+                if (flow.menuItems) {
+                    for (const [icon, dest] of Object.entries(flow.menuItems)) {
+                        if (iconText === icon) {
+                            if (icon === 'logout') {
+                                showToast('Logging out...');
+                            }
+                            navigateTo(dest);
+                            return;
+                        }
+                    }
+                }
+
+                // === Handle Text Links (for drawer menu items) ===
+                if (flow.textLinks) {
+                    for (const [keyword, dest] of Object.entries(flow.textLinks)) {
+                        if (text.includes(keyword)) {
+                            if (keyword === 'logout') {
+                                showToast('Logging out...');
+                            }
+                            navigateTo(dest);
+                            return;
+                        }
+                    }
+                }
+
+                // === PHASE 2: Handle Icon-based navigation (menu, FAB, etc.) ===
+                if (flow.icons) {
+                    for (const [icon, dest] of Object.entries(flow.icons)) {
+                        if (iconText === icon || iconText.includes(icon)) {
+                            navigateTo(dest);
+                            return;
+                        }
+                    }
+                }
+
+                // Handle back button
+                if (iconText.includes('arrow_back') || iconText.includes('chevron') || 
+                    iconText === 'close' || text === 'back') {
+                    goBack();
+                    return;
+                }
+
+                // Handle skip
+                if (text.includes('skip') && flow.skip) {
+                    navigateTo(flow.skip);
+                    return;
+                }
+
+                // Handle alternatives
+                if (flow.alternatives) {
+                    for (const [key, dest] of Object.entries(flow.alternatives)) {
+                        if (text.includes(key)) {
+                            navigateTo(dest);
+                            return;
+                        }
+                    }
+                }
+
+                // Handle main triggers
+                if (flow.triggers && flow.target) {
+                    for (const trigger of flow.triggers) {
+                        if (text.includes(trigger)) {
+                            if (trigger === 'login' || trigger === 'sign up' || trigger === 'reset' || trigger === 'verify') {
+                                showToast('✓ Success!');
+                            }
+                            navigateTo(flow.target);
+                            return;
+                        }
+                    }
+                }
+
+                // === PHASE 2: Handle shutter/capture button for OCR ===
+                if (screenName === 'scan_prescription_1') {
+                    // Shutter button click - look for the large circular button
+                    const isShutterButton = target.classList.contains('rounded-full') && 
+                                           (target.offsetWidth > 50 || iconText === 'photo_camera' || 
+                                            target.closest('[class*="shutter"]'));
+                    if (isShutterButton || iconText === '' && target.closest('button[class*="bg-white"]')) {
+                        navigateTo('scan_prescription_2');
+                        return;
+                    }
+                }
+
+            }, true);
+
+            // Form input focus styling
+            doc.querySelectorAll('input, textarea').forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.borderColor = '#00A1A9';
+                    this.style.boxShadow = '0 0 0 3px rgba(0,161,169,0.15)';
+                });
+                input.addEventListener('blur', function() {
+                    this.style.borderColor = '';
+                    this.style.boxShadow = '';
+                });
+            });
+
+            // === CHATBOT INTERACTION ===
+            if (screenName === 'cureta_health_assistant_chat') {
+                setupChatbot(doc);
+            }
+        }
+
+        // Chatbot AI responses
+        const chatResponses = [
+            "I understand your concern. Based on what you've described, I recommend consulting with your healthcare provider for a proper evaluation.",
+            "That's a great question! Taking your medications as prescribed is important. Would you like me to help set up a reminder?",
+            "I'm here to help! Could you tell me more about your symptoms so I can provide better guidance?",
+            "Based on your health records, it looks like your next checkup is due soon. Would you like me to help schedule it?",
+            "Remember to stay hydrated and get enough rest. Is there anything specific about your health you'd like to discuss?",
+            "I can help you track your medications, manage appointments, and answer general health questions. What would you like to do?",
+            "That's helpful information. I've noted this in your health profile. Is there anything else you'd like to add?"
+        ];
+
+        function setupChatbot(doc) {
+            const chatContainer = doc.querySelector('main') || doc.querySelector('[class*="chat"]') || doc.querySelector('[class*="overflow-y"]');
+            const inputField = doc.querySelector('input[type="text"], textarea');
+            const sendBtn = doc.querySelector('button[class*="bg-primary"], button:has(.material-symbols-outlined)');
+            
+            // Find send button by icon
+            const allBtns = doc.querySelectorAll('button');
+            let actualSendBtn = null;
+            allBtns.forEach(btn => {
+                const icon = btn.querySelector('.material-symbols-outlined');
+                if (icon && (icon.textContent.includes('send') || icon.textContent.includes('arrow_upward'))) {
+                    actualSendBtn = btn;
+                }
+            });
+
+            if (inputField && chatContainer) {
+                const sendMessage = () => {
+                    const message = inputField.value.trim();
+                    if (!message) return;
+
+                    // Find messages container
+                    let messagesArea = doc.querySelector('[class*="space-y"], [class*="flex-col"]');
+                    if (!messagesArea) messagesArea = chatContainer;
+
+                    // Add user message
+                    const userMsg = doc.createElement('div');
+                    userMsg.className = 'flex justify-end mb-4';
+                    userMsg.innerHTML = `
+                        <div style="max-width: 80%; background: #00A1A9; color: white; padding: 12px 16px; border-radius: 18px 18px 4px 18px; font-size: 14px;">
+                            ${message}
+                        </div>
+                    `;
+                    messagesArea.appendChild(userMsg);
+
+                    // Clear input
+                    inputField.value = '';
+
+                    // Scroll to bottom
+                    messagesArea.scrollTop = messagesArea.scrollHeight;
+
+                    // Add typing indicator
+                    const typingDiv = doc.createElement('div');
+                    typingDiv.className = 'flex justify-start mb-4';
+                    typingDiv.id = 'typing-indicator';
+                    typingDiv.innerHTML = `
+                        <div style="background: #E8F5F5; padding: 12px 16px; border-radius: 18px 18px 18px 4px;">
+                            <div style="display: flex; gap: 4px;">
+                                <span style="width: 8px; height: 8px; background: #00A1A9; border-radius: 50%; animation: bounce 1s infinite;"></span>
+                                <span style="width: 8px; height: 8px; background: #00A1A9; border-radius: 50%; animation: bounce 1s infinite 0.2s;"></span>
+                                <span style="width: 8px; height: 8px; background: #00A1A9; border-radius: 50%; animation: bounce 1s infinite 0.4s;"></span>
+                            </div>
+                        </div>
+                    `;
+                    messagesArea.appendChild(typingDiv);
+
+                    // Add animation style
+                    if (!doc.getElementById('chat-animations')) {
+                        const style = doc.createElement('style');
+                        style.id = 'chat-animations';
+                        style.textContent = '@keyframes bounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-4px); } }';
+                        doc.head.appendChild(style);
+                    }
+
+                    // Bot response after delay
+                    setTimeout(() => {
+                        const typing = doc.getElementById('typing-indicator');
+                        if (typing) typing.remove();
+
+                        const botMsg = doc.createElement('div');
+                        botMsg.className = 'flex justify-start mb-4';
+                        const response = chatResponses[Math.floor(Math.random() * chatResponses.length)];
+                        botMsg.innerHTML = `
+                            <div style="max-width: 80%; background: #E8F5F5; color: #1a1a1a; padding: 12px 16px; border-radius: 18px 18px 18px 4px; font-size: 14px;">
+                                ${response}
+                            </div>
+                        `;
+                        messagesArea.appendChild(botMsg);
+                        messagesArea.scrollTop = messagesArea.scrollHeight;
+                    }, 1500);
+                };
+
+                // Send on button click
+                if (actualSendBtn) {
+                    actualSendBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        sendMessage();
+                    });
+                }
+
+                // Send on Enter key
+                inputField.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        sendMessage();
+                    }
+                });
+            }
+        }
+
+        function navigateTo(screenName) {
+            if (!screenName || screenName === AppState.currentScreen) return;
+            AppState.history.push(AppState.currentScreen);
+            loadScreen(screenName);
+        }
+
+        function goBack() {
+            if (AppState.history.length > 0) {
+                loadScreen(AppState.history.pop());
+            } else {
+                loadScreen('welcome_to_healthapp');
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadScreen('welcome_to_healthapp');
+        });
+
+        // Listen for messages from iframes (for navigation)
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'NAVIGATE') {
+                console.log('Navigate message received:', event.data.screen);
+                navigateTo(event.data.screen);
+            }
+        });
+
+        // Global functions
+        window.navigateTo = navigateTo;
+        window.goBack = goBack;
+        window.loadScreen = loadScreen;
+    </script>
+</body>
+</html>

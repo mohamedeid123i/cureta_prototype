@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add Profile - Step 2 Gender</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00A1A9",
+                        "primary-dark": "#008a91",
+                        "background-light": "#ffffff",
+                        "background-dark": "#0f2223",
+                        "surface-light": "#f5f8f8",
+                        "surface-dark": "#1a3133",
+                        "text-main": "#0c1c1d",
+                        "text-muted": "#6b8789",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 161, 169, 0.15)',
+                        'soft-hover': '0 10px 25px -5px rgba(0, 161, 169, 0.25)',
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Lexend', sans-serif;
+            min-height: max(884px, 100dvh);
+        }
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+        .gender-radio:checked + div {
+            border-color: #00A1A9;
+            background-color: rgba(0, 161, 169, 0.05);
+            color: #00A1A9;
+        }
+        .gender-radio:checked + div .icon-wrapper {
+            background-color: #00A1A9;
+            color: white;
+        }
+        .gender-radio:checked + div .radio-circle {
+             border-color: #00A1A9;
+        }
+        .gender-radio:checked + div .radio-circle-inner {
+             transform: scale(1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-white min-h-screen flex justify-center w-full">
+<div class="w-full max-w-md h-screen flex flex-col relative bg-background-light dark:bg-background-dark overflow-hidden">
+<header class="flex items-center p-4 pb-2 justify-between z-10">
+<button aria-label="Go back" class="text-text-main dark:text-white flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-surface-light dark:hover:bg-surface-dark transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span>
+</button>
+<h2 class="text-text-main dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">
+                Add Profile
+            </h2>
+</header>
+<div class="px-8 py-4">
+<div class="h-1.5 w-full bg-surface-light dark:bg-surface-dark rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 28.5%;"></div>
+</div>
+</div>
+<main class="flex-1 overflow-y-auto px-6 pb-32">
+<div class="space-y-8">
+<div class="space-y-2 text-center pt-4">
+<span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wider uppercase mb-2">Step 2 of 7</span>
+<h1 class="text-text-main dark:text-white text-[32px] font-bold leading-tight tracking-tight">
+                        What is the gender?
+                    </h1>
+<p class="text-text-muted dark:text-gray-400 text-lg">
+                        This helps us provide relevant health insights.
+                    </p>
+</div>
+<div class="w-full space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<label class="cursor-pointer group relative">
+<input class="sr-only gender-radio" name="gender" type="radio" value="male"/>
+<div class="h-40 rounded-2xl bg-surface-light dark:bg-surface-dark border-2 border-transparent hover:border-primary/30 transition-all duration-200 flex flex-col items-center justify-center gap-3">
+<div class="icon-wrapper size-14 rounded-full bg-white dark:bg-white/5 flex items-center justify-center text-text-muted transition-colors duration-200 group-hover:text-primary">
+<span class="material-symbols-outlined text-[32px]">male</span>
+</div>
+<span class="font-bold text-lg">Male</span>
+</div>
+</label>
+<label class="cursor-pointer group relative">
+<input class="sr-only gender-radio" name="gender" type="radio" value="female"/>
+<div class="h-40 rounded-2xl bg-surface-light dark:bg-surface-dark border-2 border-transparent hover:border-primary/30 transition-all duration-200 flex flex-col items-center justify-center gap-3">
+<div class="icon-wrapper size-14 rounded-full bg-white dark:bg-white/5 flex items-center justify-center text-text-muted transition-colors duration-200 group-hover:text-primary">
+<span class="material-symbols-outlined text-[32px]">female</span>
+</div>
+<span class="font-bold text-lg">Female</span>
+</div>
+</label>
+</div>
+<label class="cursor-pointer group relative block">
+<input class="sr-only gender-radio" name="gender" type="radio" value="pnts"/>
+<div class="h-16 rounded-2xl bg-surface-light dark:bg-surface-dark border-2 border-transparent hover:border-primary/30 transition-all duration-200 flex items-center justify-between px-6">
+<span class="font-bold text-lg">Prefer not to say</span>
+<div class="radio-circle size-6 rounded-full border-2 border-text-muted/30 flex items-center justify-center group-hover:border-primary/50 transition-colors">
+<div class="radio-circle-inner size-3 rounded-full bg-primary transform scale-0 transition-transform duration-200"></div>
+</div>
+</div>
+</label>
+</div>
+</div>
+</main>
+<div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-background-light via-background-light to-transparent dark:from-background-dark dark:via-background-dark pt-12">
+<button class="w-full h-14 bg-[#00A1A9] hover:bg-primary-dark text-white rounded-xl text-lg font-bold shadow-soft hover:shadow-soft-hover transition-all transform active:scale-[0.98] flex items-center justify-center gap-2">
+<span>Next Step</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+
+</body></html>

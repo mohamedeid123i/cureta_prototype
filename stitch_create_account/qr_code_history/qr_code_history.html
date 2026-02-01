@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QR Code History</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00a0a8",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#162e2f",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                    boxShadow: {
+                        "soft": "0 4px 20px -2px rgba(0, 0, 0, 0.05)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white transition-colors duration-300">
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto overflow-x-hidden pb-8">
+<!-- Header -->
+<header class="flex items-center px-6 pt-6 pb-2 justify-between sticky top-0 z-10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors -ml-2 text-slate-800 dark:text-slate-200">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+</button>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-tight flex-1 text-center pr-8">QR History</h2>
+</header>
+<!-- Main Content -->
+<main class="flex-1 px-4 py-4 space-y-4">
+<!-- Active Item: Today -->
+<div class="group relative flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl shadow-soft p-4 active:scale-[0.98] transition-all duration-200 cursor-pointer border border-slate-100 dark:border-slate-800/50">
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<!-- Icon Container -->
+<div class="flex items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0 size-14">
+<span class="material-symbols-outlined text-[28px]">qr_code_2</span>
+</div>
+<div class="flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-1">
+<p class="text-slate-900 dark:text-white text-lg font-semibold leading-none">Today, 10:45 AM</p>
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">Active</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Emergency Profile</p>
+</div>
+</div>
+<div class="shrink-0 text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Item 2: Oct 24 -->
+<div class="group relative flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl shadow-soft p-4 active:scale-[0.98] transition-all duration-200 cursor-pointer border border-slate-100 dark:border-slate-800/50">
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 shrink-0 size-14">
+<span class="material-symbols-outlined text-[28px]">monitor_heart</span>
+</div>
+<div class="flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-1">
+<p class="text-slate-700 dark:text-slate-200 text-lg font-medium leading-none">Oct 24, 2023</p>
+<span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-400 dark:text-slate-400 text-[10px] font-bold uppercase tracking-wider">Expired</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Basic Vitals</p>
+</div>
+</div>
+<div class="shrink-0 text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Item 3: Oct 12 -->
+<div class="group relative flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl shadow-soft p-4 active:scale-[0.98] transition-all duration-200 cursor-pointer border border-slate-100 dark:border-slate-800/50 opacity-90">
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 shrink-0 size-14">
+<span class="material-symbols-outlined text-[28px]">history_edu</span>
+</div>
+<div class="flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-1">
+<p class="text-slate-700 dark:text-slate-200 text-lg font-medium leading-none">Oct 12, 2023</p>
+<span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-400 dark:text-slate-400 text-[10px] font-bold uppercase tracking-wider">Expired</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Full Medical History</p>
+</div>
+</div>
+<div class="shrink-0 text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Item 4: Sep 28 -->
+<div class="group relative flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl shadow-soft p-4 active:scale-[0.98] transition-all duration-200 cursor-pointer border border-slate-100 dark:border-slate-800/50 opacity-80">
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 shrink-0 size-14">
+<span class="material-symbols-outlined text-[28px]">vaccines</span>
+</div>
+<div class="flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-1">
+<p class="text-slate-700 dark:text-slate-200 text-lg font-medium leading-none">Sep 28, 2023</p>
+<span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-400 dark:text-slate-400 text-[10px] font-bold uppercase tracking-wider">Expired</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Vaccination Record</p>
+</div>
+</div>
+<div class="shrink-0 text-slate-300 dark:text-slate-600 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Note -->
+<footer class="mt-4 mb-2">
+<div class="flex items-center justify-center gap-2 px-6">
+<span class="material-symbols-outlined text-slate-400 text-sm">info</span>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-normal leading-normal text-center">Codes expire after 24 hours for security.</p>
+</div>
+</footer>
+</div>
+</body></html>

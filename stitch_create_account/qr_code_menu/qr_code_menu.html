@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Share Health Data</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#009da8",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2223",
+                        "text-main": "#0c1b1d",
+                        "text-secondary": "#4a5568",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header -->
+<header class="flex items-center justify-between bg-background-light dark:bg-background-dark p-4 pb-2 sticky top-0 z-10">
+<button class="flex size-10 shrink-0 items-center justify-center rounded-full active:bg-gray-200 dark:active:bg-gray-800 transition-colors text-text-main dark:text-white">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h2 class="text-text-main dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">
+                Share Health Data
+            </h2>
+</header>
+<!-- Main Content Scrollable Area -->
+<main class="flex-1 flex flex-col items-center w-full max-w-md mx-auto px-4 pb-24">
+<!-- Hero Illustration -->
+<div class="w-full flex justify-center py-8">
+<div class="w-64 h-64 relative rounded-full bg-gradient-to-tr from-primary/10 to-primary/5 flex items-center justify-center p-8">
+<!-- Abstract representation of secure data sharing -->
+<div class="w-full h-full bg-center bg-contain bg-no-repeat opacity-90" data-alt="Illustration of a shield with a medical cross protecting a QR code" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfnVIH7yxaEmQnAhg8P_2QXFkwuLSLyFGpav6--GmQkaCzHcTmdtnNxs8JaZRWEHlTInkg8KXCk4kdYekPkBKBmwHlIbwvkh0AG3LRo-mykZcdJNGAG3baAXIpXGB8u_oIIhXoHaVHVL3LsfZoit7UEXnjNBjTP-xaDZgW8fpVhuSrUbp6JhSlV6zbO4lkR4CW5f4GdE1mi2XwliJoUc7vQr6eyEi_JKX95-NauuQkSghkrjtnQ-Zn_upWj9_Tw95dgSEs3ZZLlSwG");'>
+</div>
+</div>
+</div>
+<!-- Text Content -->
+<div class="flex flex-col gap-3 text-center mb-8">
+<h1 class="text-text-main dark:text-white tracking-tight text-[28px] md:text-[32px] font-bold leading-tight">
+                    Share Health Data via QR Code
+                </h1>
+<p class="text-text-secondary dark:text-gray-300 text-base font-normal leading-relaxed px-4">
+                    Generate a QR code to share your medical info securely with doctors or emergency responders.
+                </p>
+</div>
+<!-- Action Buttons -->
+<div class="w-full flex flex-col gap-4 mt-auto">
+<!-- Primary Action -->
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary hover:bg-primary/90 active:scale-[0.98] transition-all text-white gap-3 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[24px]">qr_code_2</span>
+<span class="text-base font-bold leading-normal tracking-[0.015em]">Create QR Code</span>
+</button>
+<!-- Secondary Action -->
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-transparent border-2 border-primary/20 dark:border-primary/40 hover:bg-primary/5 active:scale-[0.98] transition-all text-primary dark:text-primary gap-3">
+<span class="material-symbols-outlined text-[24px]">qr_code_scanner</span>
+<span class="text-base font-bold leading-normal tracking-[0.015em]">Scan QR Code</span>
+</button>
+</div>
+<!-- Footer Disclaimer -->
+<div class="mt-6 text-center">
+<p class="text-xs text-text-secondary/60 dark:text-gray-500 flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                    Your data is encrypted and secure.
+                </p>
+</div>
+</main>
+<!-- Bottom Spacing for visual balance on mobile -->
+<div class="h-6 w-full bg-transparent"></div>
+</div>
+</body></html>
