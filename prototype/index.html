@@ -467,15 +467,23 @@
                 'medical_conditions_&_allergies', 
                 'select_blood_type'
             ];
+            
+            // Check if this is a wizard screen - don't intercept
             if (wizardScreens.includes(screenName)) {
-                // Don't add click interceptor - screens use postMessage
-                console.log('Wizard screen loaded:', screenName);
-                return;
+                console.log('Wizard screen loaded:', screenName, '- NOT adding click interceptor');
+                return; // Exit completely - no click handler added
             }
             
             doc.body.addEventListener('click', function(e) {
                 const target = e.target.closest('button, a, [role="button"], nav span, .fab, [class*="fab"]');
                 if (!target) return;
+                
+                // Skip if target has navigation IDs (let HTML handle it)
+                if (target.id === 'continueBtn' || target.id === 'backBtn' || target.id === 'skipBtn' ||
+                    target.id === 'nextStepBtn' || target.id === 'reviewBtn') {
+                    console.log('Skipping interception for:', target.id);
+                    return; // Don't intercept - let the HTML's onclick handle it
+                }
 
                 e.preventDefault();
                 e.stopPropagation();
