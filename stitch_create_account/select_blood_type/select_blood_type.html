@@ -69,32 +69,60 @@
                 This helps us provide more personalized health insights and emergency support.
             </p>
 </div>
-<div class="grid grid-cols-2 gap-4">
-<button class="flex h-16 items-center justify-center rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xl font-bold hover:border-primary transition-all active:scale-95">
+<div id="bloodTypeGrid" class="grid grid-cols-2 gap-4">
+<button class="blood-type-btn flex h-16 items-center justify-center rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xl font-bold hover:border-primary transition-all active:scale-95" data-type="A+">
                 A+
             </button>
-<button class="flex h-16 items-center justify-center rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xl font-bold hover:border-primary transition-all active:scale-95">
+<button class="blood-type-btn flex h-16 items-center justify-center rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xl font-bold hover:border-primary transition-all active:scale-95" data-type="A-">
                 A-
             </button>
-<button class="flex h-16 items-center justify-center rounded-2xl border-2 border-primary bg-primary text-white text-xl font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+<button class="blood-type-btn flex h-16 items-center justify-center rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xl font-bold hover:border-primary transition-all active:scale-95" data-type="B+">
                 B+
             </button>
-<button class="flex h-16 items-center justify-center rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xl font-bold hover:border-primary transition-all active:scale-95">
+<button class="blood-type-btn flex h-16 items-center justify-center rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xl font-bold hover:border-primary transition-all active:scale-95" data-type="B-">
                 B-
             </button>
-<button class="flex h-16 items-center justify-center rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xl font-bold hover:border-primary transition-all active:scale-95">
+<button class="blood-type-btn flex h-16 items-center justify-center rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xl font-bold hover:border-primary transition-all active:scale-95" data-type="AB+">
                 AB+
             </button>
-<button class="flex h-16 items-center justify-center rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xl font-bold hover:border-primary transition-all active:scale-95">
+<button class="blood-type-btn flex h-16 items-center justify-center rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xl font-bold hover:border-primary transition-all active:scale-95" data-type="AB-">
                 AB-
             </button>
-<button class="flex h-16 items-center justify-center rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xl font-bold hover:border-primary transition-all active:scale-95">
+<button class="blood-type-btn flex h-16 items-center justify-center rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xl font-bold hover:border-primary transition-all active:scale-95" data-type="O+">
                 O+
             </button>
-<button class="flex h-16 items-center justify-center rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xl font-bold hover:border-primary transition-all active:scale-95">
+<button class="blood-type-btn flex h-16 items-center justify-center rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xl font-bold hover:border-primary transition-all active:scale-95" data-type="O-">
                 O-
             </button>
 </div>
+<script>
+(function() {
+    var selectedType = null;
+    var buttons = document.querySelectorAll('.blood-type-btn');
+    
+    buttons.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Remove selection from all buttons
+            buttons.forEach(function(b) {
+                b.classList.remove('border-primary', 'bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/20');
+                b.classList.add('border-slate-200', 'dark:border-slate-700', 'bg-white', 'dark:bg-slate-900');
+            });
+            
+            // Add selection to clicked button
+            this.classList.remove('border-slate-200', 'dark:border-slate-700', 'bg-white', 'dark:bg-slate-900');
+            this.classList.add('border-primary', 'bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/20');
+            
+            selectedType = this.getAttribute('data-type');
+            console.log('Selected blood type:', selectedType);
+        });
+    });
+    
+    window.getSelectedBloodType = function() { return selectedType; };
+})();
+</script>
 <div class="mt-8 flex justify-center">
 <p class="text-sm text-slate-400 text-center leading-relaxed max-w-[280px]">
                 Don't know? You can update this later in the profile settings.
@@ -102,10 +130,28 @@
 </div>
 </main>
 <div class="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background-light dark:from-background-dark via-background-light/95 dark:via-background-dark/95 to-transparent">
-<button class="w-full bg-primary hover:bg-[#008a91] text-white font-bold py-4 rounded-full text-lg shadow-xl shadow-primary/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<button id="reviewBtn" class="w-full bg-primary hover:bg-[#008a91] text-white font-bold py-4 rounded-full text-lg shadow-xl shadow-primary/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
             Review Profile
         </button>
 <div class="h-4"></div>
 </div>
+<script>
+document.getElementById('reviewBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (window.top !== window.self) {
+        window.top.postMessage({ type: 'NAVIGATE', screen: 'add_profile_-_review_&_confirm' }, '*');
+    }
+});
+
+// Back button
+document.querySelector('button[aria-label="Go back"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (window.top !== window.self) {
+        window.top.postMessage({ type: 'NAVIGATE', screen: 'medical_conditions_&_allergies' }, '*');
+    }
+});
+</script>
 
 </body></html>

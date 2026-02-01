@@ -50,11 +50,20 @@
 <body class="bg-background-light dark:bg-background-dark text-[#0c1c1d] dark:text-white min-h-screen">
 <div class="relative flex h-full min-h-screen w-full flex-col max-w-[430px] mx-auto bg-white dark:bg-background-dark shadow-xl overflow-x-hidden">
 <div class="flex items-center px-4 pt-6 pb-2 justify-between sticky top-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md z-10">
-<div class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer transition-colors">
+<button id="backBtn" class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer transition-colors">
 <span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
-</div>
+</button>
 <h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Add Profile</h2>
 </div>
+<script>
+document.getElementById('backBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (window.top !== window.self) {
+        window.top.postMessage({ type: 'NAVIGATE', screen: 'enter_your_age' }, '*');
+    }
+});
+</script>
 <div class="flex flex-col gap-3 p-6">
 <div class="flex gap-6 justify-between items-center">
 <p class="text-sm font-medium leading-normal opacity-70">Step 5 of 7</p>
