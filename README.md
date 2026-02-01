@@ -1,4 +1,4 @@
-# Cureta Health App - Mobile Prototype
+git remote set-url origin https://github.com/YOUR_ACTUAL_USERNAME/cureta-health-app.git# Cureta Health App - Mobile Prototype
 
 A comprehensive interactive mobile prototype for a healthcare application built with HTML, CSS, and JavaScript. Includes authentication, dashboard, AI chatbot, prescription scanning, and health records management.
 
