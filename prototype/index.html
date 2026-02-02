@@ -496,6 +496,43 @@
                 icons: { 'arrow_back': 'add_record_step4', 'close': 'home_screen_-_healthcare_app_2' }
             },
 
+            // ===== ADD ALERT WIZARD FLOW (4 Steps) =====
+            'add_alert_1': {
+                triggers: ['next'],
+                target: 'add_alert_2',
+                icons: { 'close': 'home_screen_-_healthcare_app_2' }
+            },
+            'add_alert_2': {
+                triggers: ['next', 'skip'],
+                target: 'add_alert_3',
+                icons: { 'arrow_back_ios_new': 'add_alert_1' }
+            },
+            'add_alert_3': {
+                triggers: ['next step', 'skip'],
+                target: 'add_alert_4',
+                icons: { 'arrow_back': 'add_alert_2' }
+            },
+            'add_alert_4': {
+                triggers: ['save reminder', 'save'],
+                target: 'add_medicine_alert_last_step', // Final step target
+                icons: { 'arrow_back': 'add_alert_3' }
+            },
+            'add_medicine_alert_last_step': {
+                triggers: [],
+                target: null,
+                bottomNav: {
+                    'home': 'home_screen_-_healthcare_app_2',
+                    'person': 'home_screen_-_healthcare_app_1',
+                    'document_scanner': 'scan_prescription_1',
+                    'folder': 'my_medical_records',
+                    'medication': 'medicine_alert'
+                },
+                icons: {
+                    'menu': 'side_navigation_drawer_1',
+                    'smart_toy': 'cureta_health_assistant_chat'
+                }
+            },
+
             // ===== PHASE 3: ADD FAMILY MEMBER WIZARD =====
             'add_new_profile_1': {
                 triggers: ['next', 'continue'],
@@ -582,7 +619,14 @@
             'add_record_step2': 'add_record_step2/basic_info.html',
             'add_record_step3': 'add_record_step3/optional_notes.html',
             'add_record_step4': 'add_record_step4/attach_files.html',
-            'add_record_step5': 'add_record_step5/review_&_save.html'
+            'add_record_step5': 'add_record_step5/review_&_save.html',
+
+            // Add Alert Wizard Mapping
+            'add_alert_1': 'add_alert_1/add_medicine_1.html',
+            'add_alert_2': 'add_alert_2/set_reminder_time.html',
+            'add_alert_3': 'add_alert_3/optional_medicine_info.html',
+            'add_alert_4': 'add_alert_4/preview_&_save_reminder.html',
+            'add_medicine_alert_last_step': 'add_medicine_alert_last_step/medicine_alert.html'
         };
 
         function showToast(message) {
@@ -766,6 +810,11 @@
                     // Add Record button
                     if (text.includes('add record') || iconText === 'note_add') {
                         navigateTo('add_record_step1');
+                        return;
+                    }
+                    // Add Alert button
+                    if (text.includes('add alert') || iconText === 'add_alert') {
+                        navigateTo('add_alert_1');
                         return;
                     }
                     // Drawer menu items
