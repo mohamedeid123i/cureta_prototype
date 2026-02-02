@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cureta Health App - Phase 1, 2 & 3 Prototype</title>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Lexend', sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
@@ -16,15 +22,17 @@
             align-items: center;
             padding: 20px;
         }
+
         .phone-frame {
             width: 393px;
             height: 852px;
             background: #1a1a1a;
             border-radius: 40px;
             padding: 10px;
-            box-shadow: 0 0 0 2px #333, 0 0 0 4px #1a1a1a, 0 50px 100px rgba(0,0,0,0.5);
+            box-shadow: 0 0 0 2px #333, 0 0 0 4px #1a1a1a, 0 50px 100px rgba(0, 0, 0, 0.5);
             position: relative;
         }
+
         .phone-screen {
             width: 100%;
             height: 100%;
@@ -33,6 +41,7 @@
             overflow: hidden;
             position: relative;
         }
+
         #screenFrame {
             width: 100%;
             height: 100%;
@@ -40,50 +49,88 @@
             border-radius: 32px;
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
+
         /* Slide animations for wizard flows */
         .slide-in-right {
             animation: slideInRight 0.3s ease forwards;
         }
+
         .slide-out-left {
             animation: slideOutLeft 0.3s ease forwards;
         }
+
         .slide-in-left {
             animation: slideInLeft 0.3s ease forwards;
         }
+
         .slide-out-right {
             animation: slideOutRight 0.3s ease forwards;
         }
+
         @keyframes slideInRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
+
         @keyframes slideOutLeft {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(-100%); opacity: 0; }
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
         }
+
         @keyframes slideInLeft {
-            from { transform: translateX(-100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
+
         @keyframes slideOutRight {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
         }
+
         .screen-indicator {
             position: fixed;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0,161,169,0.95);
+            background: rgba(0, 161, 169, 0.95);
             color: white;
             padding: 10px 20px;
             border-radius: 25px;
             font-size: 13px;
             z-index: 10000;
-            box-shadow: 0 4px 15px rgba(0,161,169,0.3);
+            box-shadow: 0 4px 15px rgba(0, 161, 169, 0.3);
             max-width: 90%;
             text-align: center;
         }
+
         .toast {
             position: fixed;
             top: 80px;
@@ -98,10 +145,12 @@
             opacity: 0;
             transition: all 0.3s ease;
         }
+
         .toast.show {
             transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
+
         .loading-overlay {
             position: absolute;
             top: 0;
@@ -116,6 +165,7 @@
             z-index: 100;
             border-radius: 28px;
         }
+
         .spinner {
             width: 40px;
             height: 40px;
@@ -124,7 +174,13 @@
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
         }
-        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
         .loading-text {
             margin-top: 15px;
             color: #00a0a8;
@@ -132,6 +188,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="phone-frame">
         <div class="phone-screen">
@@ -154,67 +211,67 @@
         // Phase 1 Screen Flow
         const ScreenFlows = {
             // ===== ONBOARDING FLOW =====
-            'welcome_to_healthapp': { 
+            'welcome_to_healthapp': {
                 triggers: ['get started', 'start'],
                 target: 'secure_medical_records',
                 alternatives: { 'login': 'welcome_back' }
             },
-            'secure_medical_records': { 
+            'secure_medical_records': {
                 triggers: ['next'],
                 target: 'timely_medicine_alerts',
                 skip: 'welcome_back'
             },
-            'timely_medicine_alerts': { 
+            'timely_medicine_alerts': {
                 triggers: ['next'],
                 target: 'secure_qr_sharing',
                 skip: 'welcome_back'
             },
-            'secure_qr_sharing': { 
+            'secure_qr_sharing': {
                 triggers: ['next'],
                 target: 'manage_family_profiles_3',
                 skip: 'welcome_back'
             },
-            'manage_family_profiles_3': { 
+            'manage_family_profiles_3': {
                 triggers: ['next'],
                 target: 'manage_family_profiles_1',
                 skip: 'welcome_back'
             },
-            'manage_family_profiles_1': { 
+            'manage_family_profiles_1': {
                 triggers: ['next'],
                 target: 'manage_family_profiles_2',
                 skip: 'welcome_back'
             },
-            'manage_family_profiles_2': { 
+            'manage_family_profiles_2': {
                 triggers: ['create account', 'get started', 'next'],
                 target: 'welcome_back',
                 skip: 'welcome_back'
             },
-            
+
             // ===== AUTHENTICATION FLOW =====
-            'welcome_back': { 
+            'welcome_back': {
                 triggers: ['login', 'sign in'],
                 target: 'home_screen_-_healthcare_app_2',
-                alternatives: { 
-                    'forgot': 'reset_password', 
+                alternatives: {
+                    'forgot': 'reset_password',
                     'create': 'create_an_account',
                     'sign up': 'create_an_account'
                 }
             },
-            'create_an_account': { 
+            'create_an_account': {
                 triggers: ['sign up', 'create'],
                 target: 'welcome_back',
                 alternatives: { 'login': 'welcome_back' }
             },
-            'reset_password': { 
+            'reset_password': {
                 triggers: ['send', 'continue'],
                 target: 'enter_verification_code',
                 alternatives: { 'back to login': 'welcome_back' }
             },
-            'enter_verification_code': { 
+            'enter_verification_code': {
                 triggers: ['verify', 'continue'],
                 target: 'set_a_new_password'
             },
-            'set_a_new_password': { 
+            'set_a_new_password': {
                 triggers: ['reset', 'save', 'confirm'],
                 target: 'welcome_back'
             },
@@ -317,6 +374,35 @@
                 }
             },
 
+            // ===== QR CODE SHARE FLOW =====
+            'qr_code_menu': {
+                triggers: ['create qr code', 'create'],
+                target: 'select_data_to_share',
+                icons: {
+                    'arrow_back': 'home_screen_-_healthcare_app_2',
+                    'arrow_back_ios_new': 'home_screen_-_healthcare_app_2'
+                }
+            },
+            'select_data_to_share': {
+                triggers: ['generate qr code', 'generate'],
+                target: 'generate_qr_code_3',
+                back: 'qr_code_menu',
+                icons: {
+                    'arrow_back': 'qr_code_menu',
+                    'arrow_back_ios_new': 'qr_code_menu'
+                }
+            },
+            'generate_qr_code_3': {
+                triggers: ['done', 'close', 'share'],
+                target: 'home_screen_-_healthcare_app_2',
+                back: 'select_data_to_share',
+                icons: {
+                    'arrow_back': 'select_data_to_share',
+                    'arrow_back_ios_new': 'select_data_to_share',
+                    'close': 'home_screen_-_healthcare_app_2'
+                }
+            },
+
             // ===== PHASE 3: ADD FAMILY MEMBER WIZARD =====
             'add_new_profile_1': {
                 triggers: ['next', 'continue'],
@@ -414,32 +500,32 @@
 
         function loadScreen(screenName) {
             if (!screenName) return;
-            
+
             const frame = document.getElementById('screenFrame');
             const indicator = document.getElementById('screenIndicator');
-            
+
             // Updated: Use folder_name/folder_name.html pattern
             const url = `/stitch_create_account/${encodeURIComponent(screenName)}/${encodeURIComponent(screenName)}.html`;
-            
-            frame.onload = function() {
+
+            frame.onload = function () {
                 AppState.currentScreen = screenName;
-                
+
                 // Format screen name for display
                 const displayName = screenName.replace(/_/g, ' ').replace(/-/g, ' ');
                 indicator.textContent = displayName;
-                
+
                 try {
                     setupFrameInteraction(frame, screenName);
-                } catch(e) {
+                } catch (e) {
                     console.log('Frame setup:', e);
                 }
             };
-            
-            frame.onerror = function() {
+
+            frame.onerror = function () {
                 hideLoading();
                 indicator.textContent = 'Error: ' + screenName;
             };
-            
+
             frame.src = url;
         }
 
@@ -448,36 +534,36 @@
             if (!doc || !doc.body) return;
 
             const flow = ScreenFlows[screenName] || {};
-            
+
             // === CHATBOT SCREEN: Let the chatbot handle its own interactions ===
             if (screenName === 'cureta_health_assistant_chat') {
                 // Use postMessage to tell chatbot to initialize (cross-origin safe)
                 try {
                     frame.contentWindow.postMessage({ type: 'INIT_CHATBOT' }, '*');
-                } catch(e) {
+                } catch (e) {
                     console.log('Chatbot postMessage:', e);
                 }
                 // Don't add any click listeners - let chatbot handle everything
                 return;
             }
-            
+
             // === PHASE 3 WIZARD SCREENS: Let them handle their own interactions ===
             const wizardScreens = [
                 'enter_your_age',
-                'medical_conditions_&_allergies', 
+                'medical_conditions_&_allergies',
                 'select_blood_type'
             ];
-            
+
             // Check if this is a wizard screen - don't intercept
             if (wizardScreens.includes(screenName)) {
                 console.log('Wizard screen loaded:', screenName, '- NOT adding click interceptor');
                 return; // Exit completely - no click handler added
             }
-            
-            doc.body.addEventListener('click', function(e) {
+
+            doc.body.addEventListener('click', function (e) {
                 const target = e.target.closest('button, a, [role="button"], nav span, .fab, [class*="fab"]');
                 if (!target) return;
-                
+
                 // Skip if target has navigation IDs (let HTML handle it)
                 if (target.id === 'continueBtn' || target.id === 'backBtn' || target.id === 'skipBtn' ||
                     target.id === 'nextStepBtn' || target.id === 'reviewBtn') {
@@ -489,8 +575,8 @@
                 e.stopPropagation();
 
                 const text = target.textContent.toLowerCase().trim();
-                const iconEl = target.querySelector('.material-symbols-outlined') || 
-                               (target.classList.contains('material-symbols-outlined') ? target : null);
+                const iconEl = target.querySelector('.material-symbols-outlined') ||
+                    (target.classList.contains('material-symbols-outlined') ? target : null);
                 const iconText = iconEl ? iconEl.textContent.toLowerCase().trim() : '';
 
                 console.log('Click:', { screenName, text, iconText });
@@ -564,6 +650,11 @@
                         navigateTo('medicine_alert');
                         return;
                     }
+                    // QR Code - My QR Code button
+                    if (text.includes('qr code') || text.includes('my qr') || iconText === 'qr_code_2' || iconText === 'qr_code') {
+                        navigateTo('qr_code_menu');
+                        return;
+                    }
                     // Drawer menu items
                     if (text.includes('appointments') || iconText === 'calendar_month') {
                         showToast('Appointments coming soon');
@@ -590,7 +681,7 @@
                 // === PHASE 3: Profile Screen (home_screen_-_healthcare_app_1) - Add Member trigger ===
                 if (screenName === 'home_screen_-_healthcare_app_1') {
                     // Add Member button (dashed border card)
-                    if (text.includes('add member') || iconText === 'add' || 
+                    if (text.includes('add member') || iconText === 'add' ||
                         (target.classList.contains('border-dashed') || target.closest('[class*="border-dashed"]'))) {
                         navigateWithAnimation('add_new_profile_1', 'forward');
                         return;
@@ -654,7 +745,7 @@
                         return;
                     }
                     // Handle Next/Continue buttons
-                    if (text.includes('next') || text.includes('continue') || 
+                    if (text.includes('next') || text.includes('continue') ||
                         text.includes('confirm') || text.includes('save')) {
                         if (flow.target) {
                             // Final screen confirmation
@@ -714,7 +805,7 @@
                 }
 
                 // Handle back button
-                if (iconText.includes('arrow_back') || iconText.includes('chevron') || 
+                if (iconText.includes('arrow_back') || iconText.includes('chevron') ||
                     iconText === 'close' || text === 'back') {
                     goBack();
                     return;
@@ -752,9 +843,9 @@
                 // === PHASE 2: Handle shutter/capture button for OCR ===
                 if (screenName === 'scan_prescription_1') {
                     // Shutter button click - look for the large circular button
-                    const isShutterButton = target.classList.contains('rounded-full') && 
-                                           (target.offsetWidth > 50 || iconText === 'photo_camera' || 
-                                            target.closest('[class*="shutter"]'));
+                    const isShutterButton = target.classList.contains('rounded-full') &&
+                        (target.offsetWidth > 50 || iconText === 'photo_camera' ||
+                            target.closest('[class*="shutter"]'));
                     if (isShutterButton || iconText === '' && target.closest('button[class*="bg-white"]')) {
                         navigateTo('scan_prescription_2');
                         return;
@@ -765,11 +856,11 @@
 
             // Form input focus styling
             doc.querySelectorAll('input, textarea').forEach(input => {
-                input.addEventListener('focus', function() {
+                input.addEventListener('focus', function () {
                     this.style.borderColor = '#00A1A9';
                     this.style.boxShadow = '0 0 0 3px rgba(0,161,169,0.15)';
                 });
-                input.addEventListener('blur', function() {
+                input.addEventListener('blur', function () {
                     this.style.borderColor = '';
                     this.style.boxShadow = '';
                 });
@@ -796,7 +887,7 @@
             const chatContainer = doc.querySelector('main') || doc.querySelector('[class*="chat"]') || doc.querySelector('[class*="overflow-y"]');
             const inputField = doc.querySelector('input[type="text"], textarea');
             const sendBtn = doc.querySelector('button[class*="bg-primary"], button:has(.material-symbols-outlined)');
-            
+
             // Find send button by icon
             const allBtns = doc.querySelectorAll('button');
             let actualSendBtn = null;
@@ -901,36 +992,36 @@
         // Phase 3: Navigate with slide animation
         function navigateWithAnimation(screenName, direction) {
             if (!screenName || screenName === AppState.currentScreen) return;
-            
+
             const frame = document.getElementById('screenFrame');
-            
+
             // Apply exit animation
             if (direction === 'forward') {
                 frame.classList.add('slide-out-left');
             } else {
                 frame.classList.add('slide-out-right');
             }
-            
+
             setTimeout(() => {
                 // Remove exit animation
                 frame.classList.remove('slide-out-left', 'slide-out-right');
-                
+
                 // Navigate
                 if (direction === 'forward') {
                     AppState.history.push(AppState.currentScreen);
                 } else if (AppState.history.length > 0) {
                     AppState.history.pop();
                 }
-                
+
                 // Load new screen with entry animation
                 if (direction === 'forward') {
                     frame.classList.add('slide-in-right');
                 } else {
                     frame.classList.add('slide-in-left');
                 }
-                
+
                 loadScreen(screenName);
-                
+
                 // Remove entry animation after it completes
                 setTimeout(() => {
                     frame.classList.remove('slide-in-right', 'slide-in-left');
@@ -952,7 +1043,7 @@
         });
 
         // Listen for messages from iframes (for navigation)
-        window.addEventListener('message', function(event) {
+        window.addEventListener('message', function (event) {
             if (event.data && event.data.type === 'NAVIGATE') {
                 console.log('Navigate message received:', event.data.screen);
                 navigateTo(event.data.screen);
@@ -965,4 +1056,5 @@
         window.loadScreen = loadScreen;
     </script>
 </body>
+
 </html>
