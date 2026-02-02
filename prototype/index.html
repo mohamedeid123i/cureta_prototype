@@ -26,18 +26,51 @@
         .phone-frame {
             width: 393px;
             height: 852px;
-            background: #1a1a1a;
-            border-radius: 40px;
-            padding: 10px;
-            box-shadow: 0 0 0 2px #333, 0 0 0 4px #1a1a1a, 0 50px 100px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 50%, #0d0d0d 100%);
+            border-radius: 55px;
+            padding: 12px;
+            box-shadow:
+                inset 0 0 0 2px #3a3a3a,
+                0 0 0 1px #1a1a1a,
+                0 0 0 4px #2d2d2d,
+                0 0 0 6px #1a1a1a,
+                0 50px 100px rgba(0, 0, 0, 0.6),
+                0 20px 60px rgba(0, 0, 0, 0.4);
             position: relative;
+        }
+
+        /* iPhone 16 Dynamic Island */
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 126px;
+            height: 37px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 1000;
+        }
+
+        /* Side buttons - Volume */
+        .phone-frame::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 180px;
+            width: 4px;
+            height: 65px;
+            background: linear-gradient(90deg, #2a2a2a, #1a1a1a);
+            border-radius: 2px 0 0 2px;
+            box-shadow: 0 45px 0 #2a2a2a, 0 -35px 0 #2a2a2a;
         }
 
         .phone-screen {
             width: 100%;
             height: 100%;
             background: #f5f8f8;
-            border-radius: 32px;
+            border-radius: 45px;
             overflow: hidden;
             position: relative;
         }
@@ -46,8 +79,23 @@
             width: 100%;
             height: 100%;
             border: none;
-            border-radius: 32px;
+            border-radius: 45px;
             transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* Hide scrollbars but keep scroll functionality */
+        .phone-screen,
+        #screenFrame {
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE/Edge */
+        }
+
+        .phone-screen::-webkit-scrollbar,
+        #screenFrame::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari, Opera */
         }
 
         /* Slide animations for wizard flows */
@@ -306,6 +354,24 @@
                 }
             },
 
+            // ===== PHASE 2: MY MEDICAL RECORDS =====
+            'my_medical_records': {
+                triggers: [],
+                target: null,
+                bottomNav: {
+                    'home': 'home_screen_-_healthcare_app_2',
+                    'person': 'home_screen_-_healthcare_app_1',
+                    'document_scanner': 'scan_prescription_1',
+                    'folder': 'my_medical_records',
+                    'medication': 'medicine_alert'
+                },
+                icons: {
+                    'arrow_back': 'home_screen_-_healthcare_app_2',
+                    'arrow_back_ios_new': 'home_screen_-_healthcare_app_2',
+                    'smart_toy': 'cureta_health_assistant_chat'
+                }
+            },
+
             // ===== PHASE 2: AI CHAT =====
             'cureta_health_assistant_chat': {
                 triggers: [],
@@ -403,6 +469,33 @@
                 }
             },
 
+            // ===== ADD RECORD WIZARD FLOW =====
+            'add_record_step1': {
+                triggers: ['next', 'continue'],
+                target: 'add_record_step2',
+                icons: { 'arrow_back': 'home_screen_-_healthcare_app_2', 'close': 'home_screen_-_healthcare_app_2' }
+            },
+            'add_record_step2': {
+                triggers: ['next', 'continue'],
+                target: 'add_record_step3',
+                icons: { 'arrow_back': 'add_record_step1', 'close': 'home_screen_-_healthcare_app_2' }
+            },
+            'add_record_step3': {
+                triggers: ['next', 'continue'],
+                target: 'add_record_step4',
+                icons: { 'arrow_back': 'add_record_step2', 'close': 'home_screen_-_healthcare_app_2' }
+            },
+            'add_record_step4': {
+                triggers: ['next', 'continue'],
+                target: 'add_record_step5',
+                icons: { 'arrow_back': 'add_record_step3', 'close': 'home_screen_-_healthcare_app_2' }
+            },
+            'add_record_step5': {
+                triggers: ['save', 'confirm', 'done'],
+                target: 'home_screen_-_healthcare_app_2',
+                icons: { 'arrow_back': 'add_record_step4', 'close': 'home_screen_-_healthcare_app_2' }
+            },
+
             // ===== PHASE 3: ADD FAMILY MEMBER WIZARD =====
             'add_new_profile_1': {
                 triggers: ['next', 'continue'],
@@ -483,6 +576,15 @@
             }
         };
 
+        // Custom file mapping for screens that don't match folder_name/folder_name.html pattern
+        const ScreenFileMap = {
+            'add_record_step1': 'add_record_step1/add_condition.html',
+            'add_record_step2': 'add_record_step2/basic_info.html',
+            'add_record_step3': 'add_record_step3/optional_notes.html',
+            'add_record_step4': 'add_record_step4/attach_files.html',
+            'add_record_step5': 'add_record_step5/review_&_save.html'
+        };
+
         function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
@@ -504,8 +606,14 @@
             const frame = document.getElementById('screenFrame');
             const indicator = document.getElementById('screenIndicator');
 
-            // Updated: Use folder_name/folder_name.html pattern
-            const url = `/stitch_create_account/${encodeURIComponent(screenName)}/${encodeURIComponent(screenName)}.html`;
+            // Check if we have a custom mapping for this screen
+            let url;
+            if (ScreenFileMap[screenName]) {
+                url = `/stitch_create_account/${ScreenFileMap[screenName]}`;
+            } else {
+                // Default pattern: folder_name/folder_name.html
+                url = `/stitch_create_account/${encodeURIComponent(screenName)}/${encodeURIComponent(screenName)}.html`;
+            }
 
             frame.onload = function () {
                 AppState.currentScreen = screenName;
@@ -645,7 +753,7 @@
                         navigateTo('my_medical_records');
                         return;
                     }
-                    // Bottom nav - Medications
+                    // Bottom nav - Meds
                     if (iconText === 'medication') {
                         navigateTo('medicine_alert');
                         return;
@@ -653,6 +761,11 @@
                     // QR Code - My QR Code button
                     if (text.includes('qr code') || text.includes('my qr') || iconText === 'qr_code_2' || iconText === 'qr_code') {
                         navigateTo('qr_code_menu');
+                        return;
+                    }
+                    // Add Record button
+                    if (text.includes('add record') || iconText === 'note_add') {
+                        navigateTo('add_record_step1');
                         return;
                     }
                     // Drawer menu items
